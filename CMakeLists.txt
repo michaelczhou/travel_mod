@@ -10,7 +10,8 @@ INCLUDE_DIRECTORIES(./src/cvblob)
 INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES(/home/zc/local/include/eigen3)#/usr/include/eigen3)
 
-FILE(GLOB srcfile  src/*.cpp)
+FILE(GLOB srcfile  src/*.c*)
+#FILE(GLOB srcfile  src/*.c)
 FILE(GLOB headfile src/*.h)
 FILE(GLOB gslicfile src/gslic/*.*)
 FILE(GLOB cvblobfile src/cvblob/*.*)
@@ -21,13 +22,13 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/main_travelablev3.cpp
 
 if(NOT CUDA_FOUND)
 	message( STATUS "The PROJECT will run without GPU")
-    ADD_EXECUTABLE(travel ${srcfile} ${headfile} ${cvblobfile})
+    ADD_EXECUTABLE(call1 ${srcfile} ${headfile} ${cvblobfile})
 elseif( CUDA_FOUND )
     CUDA_ADD_EXECUTABLE(travel ${srcfile} ${headfile} ${gslicfile} ${cvblobfile})
     #MESSAGE(STATUS 'OpenCV_LIBS: ${CUDA_LIBS}')
 endif(NOT CUDA_FOUND)
 
-TARGET_LINK_LIBRARIES(travel ${OpenCV_LIBS}) 
+TARGET_LINK_LIBRARIES(call1 ${OpenCV_LIBS})
 
 # Set optimized building:
 if( CMAKE_BUILD_TYPE MATCHES "Debug" )

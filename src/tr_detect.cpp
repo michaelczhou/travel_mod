@@ -433,7 +433,7 @@ void TRDetect::updateLayer()
         // inputE = inputE.rowwise().normalized();
         for(int r=0; r<input.rows; ++r)
         {
-			input.row(r) /= info.at<__int32>(r,INFO_SZ);
+            input.row(r) /= info.at<uint32_t>(r,INFO_SZ);
         }
 
         // 2.weight: initialize weight
@@ -962,7 +962,7 @@ void TRDetect::extract(int label)
 	// normalize the network input
 	for(int r=0; r<input.rows; ++r)
 	{
-		input.row(r) /= info.at<__int32>(r,INFO_SZ);
+        input.row(r) /= info.at<uint32_t>(r,INFO_SZ);
 	}
 
 	//6th write features into a txt
@@ -1080,7 +1080,7 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 	// normalize the network input
 	for(int r=0; r<input.rows; ++r)
 	{
-		input.row(r) /= info.at<__int32>(r,INFO_SZ);
+        input.row(r) /= info.at<uint32_t>(r,INFO_SZ);
 	}
 
 	//6th write features into a txt

@@ -1,22 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include "svm.h"
+#include "svm-predict.h"
 
-int print_null(const char *s,...) {return 0;}
-
-static int (*info)(const char *fmt,...) = &printf;
-
-struct svm_node *x;
-int max_nr_attr = 64;
-
-struct svm_model* model;
-int predict_probability=0;
-
-static char *line = NULL;
-static int max_line_len;
 
 static char* readline(FILE *input)
 {

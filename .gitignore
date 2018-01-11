@@ -30,4 +30,5 @@
 *.exe
 *.out
 
-*.user
+CMakeLists.txt.user
+build/

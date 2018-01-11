@@ -3,14 +3,14 @@
 #include "helper_timer.h"
 #include "tr_detect.h"
 #include "svm.h"
-//#include "outputVote.cpp"
+#include "svm-predict.h"
 
 using namespace cv;
 using namespace std;
 
 char outputVote(char type[]);
 
-int main()
+int main1()
 {
 	TRDetect::parameters param;
 
@@ -94,8 +94,8 @@ int main()
 		//保存叠加结果
 		//imwrite(path +"new/" + sa +"result"+ ".jpg",sResult);
 		//用extract提取测试集的特征,并保存到txt
-		trd.extract(i,label);
-
+        //trd.extract(i,label);
+        trd.extract(label);
 		//使用svmpredict来对测试集预测，后续还要在线显示
 		//判断sa+feature文件是否存在，若不存在，跳过predict
 		//直接使用之前的output文件

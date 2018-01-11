@@ -3,13 +3,13 @@
 #include "helper_timer.h"
 #include "tr_detect.h"
 #include "svm.h"
-
+#include "svm-predict.h"
 using namespace cv;
 using namespace std;
 
 char outputVote(char type[]);
 
-int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, int label=2)
+int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& trd,int label=2)
 {
 	
 
@@ -77,8 +77,8 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, int label=
 int main(){
 
 	//更改数据集的地址
-	string path = "F:/dataset/part_a/wet-a/camera_stereo_left/frames/";
-	string path2= "F:/dataset/part_a/wet-a/camera_stereo_right/frames/";
+    string path = "/home/zc/Downloads/datesets/Kitti/sequences/00/image_0/";
+    string path2= "/home/zc/Downloads/datesets/Kitti/sequences/00/image_1/";
 
 	TRDetect::parameters param;
 
@@ -88,7 +88,7 @@ int main(){
 	//1.读取图片及其尺寸
 	//param.imgSize = imgl.size();
 	//2.或者在知道尺寸的情况下直接size=（640，480）
-	param.imgSize = (640,480);
+    param.imgSize = cv::Size(1241,376);
 
 	param.calib.cu = 321.93585;
 	param.calib.cv = 245.76448;
@@ -114,21 +114,22 @@ int main(){
 	Mat sResult;
 	int sout;
 
-	//创建一个数组，存的是前面几帧的label
+    //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
 
-	for(int i=100; i<400; i=i++) //step into the loop
+    for(int i=1000; i<4000; i++) //step into the loop
 	{
 		//to fix the problem the filename
 		//sa是序号，filename是特征提取后保存的文件名
 		char a[10];
 		string sa;
-		sprintf(a,"%04d", i);
+        sprintf(a,"%06d", i);
 		sa =a;
+        //std::cout << sa << endl;
 		
-		Mat imgl = imread(path + sa + ".jpg");
-		Mat imgr = imread(path2 + sa + ".jpg");
+        Mat imgl = imread(path + sa + ".png");
+        Mat imgr = imread(path2 + sa + ".png");
 
-		call(imgl, imgr, sout, sResult,0);
+        call(imgl, imgr, sout, sResult,trd,1);
 	}
 }
