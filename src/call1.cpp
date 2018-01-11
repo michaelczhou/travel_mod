@@ -125,7 +125,7 @@ int main(){
 		string sa;
         sprintf(a,"%06d", i);
 		sa =a;
-        //std::cout << sa << endl;
+        //std::cout << sa << std::endl;
 		
         Mat imgl = imread(path + sa + ".png");
         Mat imgr = imread(path2 + sa + ".png");

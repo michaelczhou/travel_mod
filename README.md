@@ -57,3 +57,5 @@ Command line arguments:
 注意模型文件要与可执行文件放在同一目录下
 ### 12.修改编码
 enca -L zh_CN -x utf-8 main.cpp
+### 13.传参\函数构建后在子函数调用
+
