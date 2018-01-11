@@ -1,0 +1,454 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+cvCrossProductPoints	cvblob/cvaux.cpp	/^  double cvCrossProductPoints(CvPoint const &a, CvPoint const &b, CvPoint const &c)$/;"	f	namespace:cvb
+cvDistanceLinePoint	cvblob/cvaux.cpp	/^  double cvDistanceLinePoint(CvPoint const &a, CvPoint const &b, CvPoint const &c, bool isSegment)$/;"	f	namespace:cvb
+cvDistancePointPoint	cvblob/cvaux.cpp	/^  double cvDistancePointPoint(CvPoint const &a, CvPoint const &b)$/;"	f	namespace:cvb
+cvDotProductPoints	cvblob/cvaux.cpp	/^  double cvDotProductPoints(CvPoint const &a, CvPoint const &b, CvPoint const &c)$/;"	f	namespace:cvb
+cvb	cvblob/cvaux.cpp	/^namespace cvb$/;"	n	file:
+Palete	cvblob/cvblob.cpp	/^  typedef std::map<CvLabel, CvScalar> Palete;$/;"	t	namespace:cvb	file:
+_HSV2RGB_	cvblob/cvblob.cpp	247;"	d	file:
+cvAngle	cvblob/cvblob.cpp	/^  double cvAngle(CvBlob *blob)$/;"	f	namespace:cvb
+cvFilterByArea	cvblob/cvblob.cpp	/^  void cvFilterByArea(CvBlobs &blobs, unsigned int minArea, unsigned int maxArea)$/;"	f	namespace:cvb
+cvFilterByLabel	cvblob/cvblob.cpp	/^  void cvFilterByLabel(CvBlobs &blobs, CvLabel label)$/;"	f	namespace:cvb
+cvLargestBlob	cvblob/cvblob.cpp	/^  CvLabel cvLargestBlob(const CvBlobs &blobs)$/;"	f	namespace:cvb
+cvRenderBlob	cvblob/cvblob.cpp	/^  void cvRenderBlob(const IplImage *imgLabel, CvBlob *blob, IplImage *imgSource, IplImage *imgDest, unsigned short mode, CvScalar const &color, double alpha)$/;"	f	namespace:cvb
+cvRenderBlobs	cvblob/cvblob.cpp	/^  void cvRenderBlobs(const IplImage *imgLabel, CvBlobs &blobs, IplImage *imgSource, IplImage *imgDest, unsigned short mode, double alpha)$/;"	f	namespace:cvb
+cvSaveImageBlob	cvblob/cvblob.cpp	/^  void cvSaveImageBlob(const char *filename, IplImage *img, CvBlob const *blob)$/;"	f	namespace:cvb
+cvb	cvblob/cvblob.cpp	/^namespace cvb$/;"	n	file:
+operator <<	cvblob/cvblob.cpp	/^ostream& operator<< (ostream& output, const cvb::CvBlob& b)$/;"	f
+CVBLOB_H	cvblob/cvblob.h	31;"	d
+CV_BLOB_MAX_LABEL	cvblob/cvblob.h	215;"	d
+CV_BLOB_RENDER_ANGLE	cvblob/cvblob.h	392;"	d
+CV_BLOB_RENDER_BOUNDING_BOX	cvblob/cvblob.h	391;"	d
+CV_BLOB_RENDER_CENTROID	cvblob/cvblob.h	390;"	d
+CV_BLOB_RENDER_COLOR	cvblob/cvblob.h	389;"	d
+CV_BLOB_RENDER_TO_LOG	cvblob/cvblob.h	393;"	d
+CV_BLOB_RENDER_TO_STD	cvblob/cvblob.h	394;"	d
+CV_CHAINCODE_DOWN	cvblob/cvblob.h	70;"	d
+CV_CHAINCODE_DOWN_LEFT	cvblob/cvblob.h	71;"	d
+CV_CHAINCODE_DOWN_RIGHT	cvblob/cvblob.h	69;"	d
+CV_CHAINCODE_LEFT	cvblob/cvblob.h	72;"	d
+CV_CHAINCODE_RIGHT	cvblob/cvblob.h	68;"	d
+CV_CHAINCODE_UP	cvblob/cvblob.h	66;"	d
+CV_CHAINCODE_UP_LEFT	cvblob/cvblob.h	73;"	d
+CV_CHAINCODE_UP_RIGHT	cvblob/cvblob.h	67;"	d
+CV_TRACK_RENDER_BOUNDING_BOX	cvblob/cvblob.h	553;"	d
+CV_TRACK_RENDER_ID	cvblob/cvblob.h	552;"	d
+CV_TRACK_RENDER_TO_LOG	cvblob/cvblob.h	554;"	d
+CV_TRACK_RENDER_TO_STD	cvblob/cvblob.h	555;"	d
+CvBlob	cvblob/cvblob.h	/^  struct CvBlob$/;"	s	namespace:cvb
+CvBlobs	cvblob/cvblob.h	/^  typedef std::map<CvLabel,CvBlob *> CvBlobs;$/;"	t	namespace:cvb
+CvChainCode	cvblob/cvblob.h	/^  typedef unsigned char CvChainCode;$/;"	t	namespace:cvb
+CvChainCodes	cvblob/cvblob.h	/^  typedef std::list<CvChainCode> CvChainCodes;$/;"	t	namespace:cvb
+CvContourChainCode	cvblob/cvblob.h	/^  struct CvContourChainCode$/;"	s	namespace:cvb
+CvContourPolygon	cvblob/cvblob.h	/^  typedef std::vector<CvPoint> CvContourPolygon;$/;"	t	namespace:cvb
+CvContoursChainCode	cvblob/cvblob.h	/^  typedef std::list<CvContourChainCode *> CvContoursChainCode; \/\/\/< List of contours (chain codes type).$/;"	t	namespace:cvb
+CvID	cvblob/cvblob.h	/^  typedef unsigned int CvID;$/;"	t	namespace:cvb
+CvIDTrack	cvblob/cvblob.h	/^  typedef std::pair<CvID, CvTrack *> CvIDTrack;$/;"	t	namespace:cvb
+CvLabel	cvblob/cvblob.h	/^  typedef unsigned int CvLabel;$/;"	t	namespace:cvb
+CvLabelBlob	cvblob/cvblob.h	/^  typedef std::pair<CvLabel,CvBlob *> CvLabelBlob;$/;"	t	namespace:cvb
+CvTrack	cvblob/cvblob.h	/^  struct CvTrack$/;"	s	namespace:cvb
+CvTracks	cvblob/cvblob.h	/^  typedef std::map<CvID, CvTrack *> CvTracks;$/;"	t	namespace:cvb
+IPL_DEPTH_LABEL	cvblob/cvblob.h	210;"	d
+__CV_BEGIN__	cvblob/cvblob.h	46;"	d
+__CV_END__	cvblob/cvblob.h	49;"	d
+active	cvblob/cvblob.h	/^    unsigned int active; \/\/\/< Indicates number of frames that has been active from last inactive period.$/;"	m	struct:cvb::CvTrack
+area	cvblob/cvblob.h	/^      unsigned int area; \/\/\/< Area (moment 00).$/;"	m	union:cvb::CvBlob::__anon5
+centroid	cvblob/cvblob.h	/^    CvPoint2D64f centroid; \/\/\/< Centroid.$/;"	m	struct:cvb::CvBlob
+centroid	cvblob/cvblob.h	/^    CvPoint2D64f centroid; \/\/\/< Centroid.$/;"	m	struct:cvb::CvTrack
+chainCode	cvblob/cvblob.h	/^    CvChainCodes chainCode; \/\/\/< Polygon description based on chain codes.$/;"	m	struct:cvb::CvContourChainCode
+contour	cvblob/cvblob.h	/^    CvContourChainCode contour;           \/\/\/< Contour.$/;"	m	struct:cvb::CvBlob
+cvCentroid	cvblob/cvblob.h	/^  inline CvPoint2D64f cvCentroid(CvBlob *blob)$/;"	f	namespace:cvb
+cvChainCodeMoves	cvblob/cvblob.h	/^  const char cvChainCodeMoves[8][2] = { { 0, -1},$/;"	m	namespace:cvb
+cvGreaterBlob	cvblob/cvblob.h	/^  inline CvLabel cvGreaterBlob(const CvBlobs &blobs)$/;"	f	namespace:cvb
+cvReleaseBlob	cvblob/cvblob.h	/^  inline void cvReleaseBlob(CvBlob *blob)$/;"	f	namespace:cvb
+cvReleaseBlobs	cvblob/cvblob.h	/^  inline void cvReleaseBlobs(CvBlobs &blobs)$/;"	f	namespace:cvb
+cvReleaseTracks	cvblob/cvblob.h	/^  inline void cvReleaseTracks(CvTracks &tracks)$/;"	f	namespace:cvb
+cvSetImageROItoBlob	cvblob/cvblob.h	/^  inline void cvSetImageROItoBlob(IplImage *img, CvBlob const *blob)$/;"	f	namespace:cvb
+cvb	cvblob/cvblob.h	/^  namespace cvb$/;"	n
+id	cvblob/cvblob.h	/^    CvID id; \/\/\/< Track identification number.$/;"	m	struct:cvb::CvTrack
+inactive	cvblob/cvblob.h	/^    unsigned int inactive; \/\/\/< Indicates number of frames that has been missing.$/;"	m	struct:cvb::CvTrack
+internalContours	cvblob/cvblob.h	/^    CvContoursChainCode internalContours; \/\/\/< Internal contours.$/;"	m	struct:cvb::CvBlob
+label	cvblob/cvblob.h	/^    CvLabel label; \/\/\/< Label assigned to the blob related to this track.$/;"	m	struct:cvb::CvTrack
+label	cvblob/cvblob.h	/^    CvLabel label; \/\/\/< Label assigned to the blob.$/;"	m	struct:cvb::CvBlob
+lifetime	cvblob/cvblob.h	/^    unsigned int lifetime; \/\/\/< Indicates how much frames the object has been in scene.$/;"	m	struct:cvb::CvTrack
+m00	cvblob/cvblob.h	/^      unsigned int m00; \/\/\/< Moment 00 (area).$/;"	m	union:cvb::CvBlob::__anon5
+m01	cvblob/cvblob.h	/^    double m01; \/\/\/< Moment 01.$/;"	m	struct:cvb::CvBlob
+m02	cvblob/cvblob.h	/^    double m02; \/\/\/< Moment 02.$/;"	m	struct:cvb::CvBlob
+m10	cvblob/cvblob.h	/^    double m10; \/\/\/< Moment 10.$/;"	m	struct:cvb::CvBlob
+m11	cvblob/cvblob.h	/^    double m11; \/\/\/< Moment 11.$/;"	m	struct:cvb::CvBlob
+m20	cvblob/cvblob.h	/^    double m20; \/\/\/< Moment 20.$/;"	m	struct:cvb::CvBlob
+maxx	cvblob/cvblob.h	/^    unsigned int maxx; \/\/\/< X max.$/;"	m	struct:cvb::CvBlob
+maxx	cvblob/cvblob.h	/^    unsigned int maxx; \/\/\/< X max.$/;"	m	struct:cvb::CvTrack
+maxy	cvblob/cvblob.h	/^    unsigned int maxy; \/\/\/< y max.$/;"	m	struct:cvb::CvBlob
+maxy	cvblob/cvblob.h	/^    unsigned int maxy; \/\/\/< y max.$/;"	m	struct:cvb::CvTrack
+minx	cvblob/cvblob.h	/^    unsigned int minx; \/\/\/< X min.$/;"	m	struct:cvb::CvBlob
+minx	cvblob/cvblob.h	/^    unsigned int minx; \/\/\/< X min.$/;"	m	struct:cvb::CvTrack
+miny	cvblob/cvblob.h	/^    unsigned int miny; \/\/\/< Y min.$/;"	m	struct:cvb::CvBlob
+miny	cvblob/cvblob.h	/^    unsigned int miny; \/\/\/< Y min.$/;"	m	struct:cvb::CvTrack
+n02	cvblob/cvblob.h	/^    double n02; \/\/\/< Normalized central moment 02.$/;"	m	struct:cvb::CvBlob
+n11	cvblob/cvblob.h	/^    double n11; \/\/\/< Normalized central moment 11.$/;"	m	struct:cvb::CvBlob
+n20	cvblob/cvblob.h	/^    double n20; \/\/\/< Normalized central moment 20.$/;"	m	struct:cvb::CvBlob
+p1	cvblob/cvblob.h	/^    double p1; \/\/\/< Hu moment 1.$/;"	m	struct:cvb::CvBlob
+p2	cvblob/cvblob.h	/^    double p2; \/\/\/< Hu moment 2.$/;"	m	struct:cvb::CvBlob
+startingPoint	cvblob/cvblob.h	/^    CvPoint startingPoint; \/\/\/< Point where contour begin.$/;"	m	struct:cvb::CvContourChainCode
+u02	cvblob/cvblob.h	/^    double u02; \/\/\/< Central moment 02.$/;"	m	struct:cvb::CvBlob
+u11	cvblob/cvblob.h	/^    double u11; \/\/\/< Central moment 11.$/;"	m	struct:cvb::CvBlob
+u20	cvblob/cvblob.h	/^    double u20; \/\/\/< Central moment 20.$/;"	m	struct:cvb::CvBlob
+BlobMeanColor	cvblob/cvblob2.cpp	/^    Scalar BlobMeanColor(CvBlob const *blob, Mat imgLabel, Mat img)$/;"	f	namespace:cvb
+FilterLabels	cvblob/cvblob2.cpp	/^    void FilterLabels(Mat imgLabel, Mat& imgOut, const CvBlobs &blobs)$/;"	f	namespace:cvb
+GetLabel	cvblob/cvblob2.cpp	/^    CvLabel GetLabel(Mat img, unsigned int x, unsigned int y)$/;"	f	namespace:cvb
+Label	cvblob/cvblob2.cpp	/^    unsigned int Label (Mat src, Mat& imgOut, CvBlobs &blobs)$/;"	f	namespace:cvb
+RenderBlob	cvblob/cvblob2.cpp	/^    void RenderBlob(Mat imgLabel, CvBlob *blob, Mat imgSource, Mat& imgDest, unsigned short mode, CvScalar const &color, double alpha)$/;"	f	namespace:cvb
+RenderBlobs	cvblob/cvblob2.cpp	/^    void RenderBlobs(Mat imgLabel, CvBlobs &blobs, Mat imgSource, Mat& imgDest, unsigned short mode, double alpha)$/;"	f	namespace:cvb
+RenderContourChainCode	cvblob/cvblob2.cpp	/^    void RenderContourChainCode(CvContourChainCode const *contour, Mat& img, CvScalar const &color)$/;"	f	namespace:cvb
+RenderContourPolygon	cvblob/cvblob2.cpp	/^    void RenderContourPolygon(CvContourPolygon const *contour, Mat& img, CvScalar const &color)$/;"	f	namespace:cvb
+RenderTracks	cvblob/cvblob2.cpp	/^    void RenderTracks(CvTracks const tracks, Mat imgSource, Mat& imgDest, unsigned short mode, CvFont *font)$/;"	f	namespace:cvb
+SaveImageBlob	cvblob/cvblob2.cpp	/^    void SaveImageBlob(const char *filename, Mat img, CvBlob const *blob)$/;"	f	namespace:cvb
+cvb	cvblob/cvblob2.cpp	/^namespace cvb$/;"	n	file:
+CVBLOB2_H	cvblob/cvblob2.h	23;"	d
+cvb	cvblob/cvblob2.h	/^namespace cvb$/;"	n
+cvBlobMeanColor	cvblob/cvcolor.cpp	/^  CvScalar cvBlobMeanColor(CvBlob const *blob, IplImage const *imgLabel, IplImage const *img)$/;"	f	namespace:cvb
+cvb	cvblob/cvcolor.cpp	/^namespace cvb$/;"	n	file:
+_USE_MATH_DEFINES	cvblob/cvcontour.cpp	22;"	d	file:
+cvContourChainCodePerimeter	cvblob/cvcontour.cpp	/^  double cvContourChainCodePerimeter(CvContourChainCode const *c)$/;"	f	namespace:cvb
+cvContourPolygonArea	cvblob/cvcontour.cpp	/^  double cvContourPolygonArea(CvContourPolygon const *p)$/;"	f	namespace:cvb
+cvContourPolygonCircularity	cvblob/cvcontour.cpp	/^  double cvContourPolygonCircularity(const CvContourPolygon *p)$/;"	f	namespace:cvb
+cvContourPolygonPerimeter	cvblob/cvcontour.cpp	/^  double cvContourPolygonPerimeter(CvContourPolygon const *p)$/;"	f	namespace:cvb
+cvConvertChainCodesToPolygon	cvblob/cvcontour.cpp	/^  CvContourPolygon *cvConvertChainCodesToPolygon(CvContourChainCode const *cc)$/;"	f	namespace:cvb
+cvPolygonContourConvexHull	cvblob/cvcontour.cpp	/^  CvContourPolygon *cvPolygonContourConvexHull(CvContourPolygon const *p)$/;"	f	namespace:cvb
+cvRenderContourChainCode	cvblob/cvcontour.cpp	/^  void cvRenderContourChainCode(CvContourChainCode const *contour, IplImage const *img, CvScalar const &color)$/;"	f	namespace:cvb
+cvRenderContourPolygon	cvblob/cvcontour.cpp	/^  void cvRenderContourPolygon(CvContourPolygon const *contour, IplImage *img, CvScalar const &color)$/;"	f	namespace:cvb
+cvSimplifyPolygon	cvblob/cvcontour.cpp	/^  CvContourPolygon *cvSimplifyPolygon(CvContourPolygon const *p, double const delta)$/;"	f	namespace:cvb
+cvWriteContourPolygonCSV	cvblob/cvcontour.cpp	/^  void cvWriteContourPolygonCSV(const CvContourPolygon& p, const string& filename)$/;"	f	namespace:cvb
+cvWriteContourPolygonSVG	cvblob/cvcontour.cpp	/^  void cvWriteContourPolygonSVG(const CvContourPolygon& p, const string& filename, const CvScalar& stroke, const CvScalar& fill)$/;"	f	namespace:cvb
+cvb	cvblob/cvcontour.cpp	/^namespace cvb$/;"	n	file:
+operator <<	cvblob/cvcontour.cpp	/^ostream& operator<< (ostream& output, const cvb::CvContourPolygon& p)$/;"	f
+pi	cvblob/cvcontour.cpp	/^const double pi = M_PI;$/;"	v
+simplifyPolygonRecursive	cvblob/cvcontour.cpp	/^  void simplifyPolygonRecursive(CvContourPolygon const *p, int const i1, int const i2, bool *pnUseFlag, double const delta)$/;"	f	namespace:cvb
+cvFilterLabels	cvblob/cvlabel.cpp	/^  void cvFilterLabels(IplImage *imgIn, IplImage *imgOut, const CvBlobs &blobs)$/;"	f	namespace:cvb
+cvGetLabel	cvblob/cvlabel.cpp	/^  CvLabel cvGetLabel(IplImage const *img, unsigned int x, unsigned int y)$/;"	f	namespace:cvb
+cvLabel	cvblob/cvlabel.cpp	/^  unsigned int cvLabel (IplImage const *img, IplImage *imgOut, CvBlobs &blobs)$/;"	f	namespace:cvb
+cvb	cvblob/cvlabel.cpp	/^namespace cvb$/;"	n	file:
+imageIn	cvblob/cvlabel.cpp	86;"	d	file:
+imageOut	cvblob/cvlabel.cpp	87;"	d	file:
+movesE	cvblob/cvlabel.cpp	/^  const char movesE[4][3][4] = { { {-1, -1, 3, CV_CHAINCODE_UP_LEFT   }, { 0, -1, 0, CV_CHAINCODE_UP   }, { 1, -1, 0, CV_CHAINCODE_UP_RIGHT   } },$/;"	m	namespace:cvb	file:
+movesI	cvblob/cvlabel.cpp	/^  const char movesI[4][3][4] = { { { 1, -1, 3, CV_CHAINCODE_UP_RIGHT   }, { 0, -1, 0, CV_CHAINCODE_UP   }, {-1, -1, 0, CV_CHAINCODE_UP_LEFT    } },$/;"	m	namespace:cvb	file:
+AB	cvblob/cvtrack.cpp	102;"	d	file:
+AT	cvblob/cvtrack.cpp	103;"	d	file:
+B	cvblob/cvtrack.cpp	108;"	d	file:
+C	cvblob/cvtrack.cpp	100;"	d	file:
+IB	cvblob/cvtrack.cpp	105;"	d	file:
+IT	cvblob/cvtrack.cpp	106;"	d	file:
+T	cvblob/cvtrack.cpp	109;"	d	file:
+cvRenderTracks	cvblob/cvtrack.cpp	/^  void cvRenderTracks(CvTracks const tracks, IplImage *imgSource, IplImage *imgDest, unsigned short mode, CvFont *font)$/;"	f	namespace:cvb
+cvUpdateTracks	cvblob/cvtrack.cpp	/^  void cvUpdateTracks(CvBlobs const &blobs, CvTracks &tracks, const double thDistance, const unsigned int thInactive, const unsigned int thActive)$/;"	f	namespace:cvb
+cvb	cvblob/cvtrack.cpp	/^namespace cvb$/;"	n	file:
+defaultFont	cvblob/cvtrack.cpp	/^  CvFont *defaultFont = NULL;$/;"	m	namespace:cvb	file:
+distantBlobTrack	cvblob/cvtrack.cpp	/^  double distantBlobTrack(CvBlob const *b, CvTrack const *t)$/;"	f	namespace:cvb
+getClusterForBlob	cvblob/cvtrack.cpp	/^  void getClusterForBlob(unsigned int blobPos, CvID *close, unsigned int nBlobs, unsigned int nTracks, CvBlobs const &blobs, CvTracks const &tracks, list<CvBlob*> &bb, list<CvTrack*> &tt)$/;"	f	namespace:cvb
+getClusterForTrack	cvblob/cvtrack.cpp	/^  void getClusterForTrack(unsigned int trackPos, CvID *close, unsigned int nBlobs, unsigned int nTracks, CvBlobs const &blobs, CvTracks const &tracks, list<CvBlob*> &bb, list<CvTrack*> &tt)$/;"	f	namespace:cvb
+DiagF	elm.cpp	18;"	d	file:
+ELM	elm.cpp	/^ELM::ELM(int nInputNeurons, int nHiddenNeurons, int elm_af):$/;"	f	class:ELM
+MatrixF	elm.cpp	15;"	d	file:
+RowVectorF	elm.cpp	17;"	d	file:
+VectorF	elm.cpp	16;"	d	file:
+buildTargetMat	elm.cpp	/^void ELM::buildTargetMat(const cv::Mat& laber, cv::Mat& target, int nLaber)$/;"	f	class:ELM
+predict	elm.cpp	/^void ELM::predict(const cv::Mat& input, cv::Mat& output, const cv::Mat& outputWeight)$/;"	f	class:ELM
+train	elm.cpp	/^void ELM::train(const cv::Mat& input, const cv::Mat& output, cv::Mat& outputWeight, const cv::Mat& weight)$/;"	f	class:ELM
+train	elm.cpp	/^void train(const cv::Mat& input, const cv::Mat& output, cv::Mat& outputWeight, const cv::Mat& weight)$/;"	f
+~ELM	elm.cpp	/^ELM::~ELM()$/;"	f	class:ELM
+ELM	elm.h	/^class ELM$/;"	c
+ELM_AF_SIGMOID	elm.h	/^        ELM_AF_SIGMOID,$/;"	e	enum:ELM::__anon3
+ELM_AF_SIGMOID_FAST	elm.h	/^        ELM_AF_SIGMOID_FAST,$/;"	e	enum:ELM::__anon3
+ELM_H	elm.h	2;"	d
+activatFunction	elm.h	/^    int activatFunction;$/;"	m	class:ELM
+bias	elm.h	/^    cv::Mat bias;$/;"	m	class:ELM
+inputWeight	elm.h	/^    cv::Mat inputWeight;$/;"	m	class:ELM
+nHiddenNeurons	elm.h	/^    int nHiddenNeurons;$/;"	m	class:ELM
+nInputNeurons	elm.h	/^    int nInputNeurons;$/;"	m	class:ELM
+DoSegmentation	gslic/FastImgSeg.cpp	/^void FastImgSeg::DoSegmentation(SEGMETHOD eMethod, double weight)$/;"	f	class:FastImgSeg
+FastImgSeg	gslic/FastImgSeg.cpp	/^FastImgSeg::FastImgSeg()$/;"	f	class:FastImgSeg
+FastImgSeg	gslic/FastImgSeg.cpp	/^FastImgSeg::FastImgSeg(int w,int h, int d, int nSegments)$/;"	f	class:FastImgSeg
+LoadImg	gslic/FastImgSeg.cpp	/^void FastImgSeg::LoadImg(unsigned char* imgP)$/;"	f	class:FastImgSeg
+Tool_DrawSites	gslic/FastImgSeg.cpp	/^void FastImgSeg::Tool_DrawSites()$/;"	f	class:FastImgSeg
+Tool_GetFilledImg	gslic/FastImgSeg.cpp	/^void FastImgSeg::Tool_GetFilledImg()$/;"	f	class:FastImgSeg
+Tool_GetMarkedImg	gslic/FastImgSeg.cpp	/^void FastImgSeg::Tool_GetMarkedImg()$/;"	f	class:FastImgSeg
+changeClusterNum	gslic/FastImgSeg.cpp	/^void FastImgSeg::changeClusterNum(int nSegments)$/;"	f	class:FastImgSeg
+clearFastSeg	gslic/FastImgSeg.cpp	/^void FastImgSeg::clearFastSeg()$/;"	f	class:FastImgSeg
+initializeFastSeg	gslic/FastImgSeg.cpp	/^void FastImgSeg::initializeFastSeg(int w,int h, int nSegments)$/;"	f	class:FastImgSeg
+~FastImgSeg	gslic/FastImgSeg.cpp	/^FastImgSeg::~FastImgSeg()$/;"	f	class:FastImgSeg
+FastImgSeg	gslic/FastImgSeg.h	/^class FastImgSeg$/;"	c
+__CUDA_SUPERPIXELSEG__	gslic/FastImgSeg.h	2;"	d
+bImgLoaded	gslic/FastImgSeg.h	/^	bool bImgLoaded;$/;"	m	class:FastImgSeg
+bMaskGot	gslic/FastImgSeg.h	/^	bool bMaskGot;$/;"	m	class:FastImgSeg
+bSegmented	gslic/FastImgSeg.h	/^	bool bSegmented;$/;"	m	class:FastImgSeg
+centerList	gslic/FastImgSeg.h	/^	SLICClusterCenter* centerList;$/;"	m	class:FastImgSeg
+height	gslic/FastImgSeg.h	/^	int height;$/;"	m	class:FastImgSeg
+markedImg	gslic/FastImgSeg.h	/^	unsigned char* markedImg;$/;"	m	class:FastImgSeg
+nMaxSegs	gslic/FastImgSeg.h	/^	int nMaxSegs;$/;"	m	class:FastImgSeg
+nSeg	gslic/FastImgSeg.h	/^	int nSeg;$/;"	m	class:FastImgSeg
+segMask	gslic/FastImgSeg.h	/^	int* segMask;$/;"	m	class:FastImgSeg
+sourceImage	gslic/FastImgSeg.h	/^	unsigned char* sourceImage;$/;"	m	class:FastImgSeg
+width	gslic/FastImgSeg.h	/^	int width;$/;"	m	class:FastImgSeg
+BLCK_SIZE	gslic/cudaDefines.h	4;"	d
+LAB_SLIC	gslic/cudaDefines.h	/^	LAB_SLIC = 0,$/;"	e	enum:_SEGMETHOD
+MAX_BLOCK_SIZE	gslic/cudaDefines.h	5;"	d
+RGB_SLIC	gslic/cudaDefines.h	/^	RGB_SLIC,$/;"	e	enum:_SEGMETHOD
+SEGMETHOD	gslic/cudaDefines.h	/^} SEGMETHOD;$/;"	t	typeref:enum:_SEGMETHOD
+XYZ_SLIC	gslic/cudaDefines.h	/^	XYZ_SLIC,$/;"	e	enum:_SEGMETHOD
+_SEGMETHOD	gslic/cudaDefines.h	/^typedef enum _SEGMETHOD$/;"	g
+__CUDA_DEFINES__	gslic/cudaDefines.h	2;"	d
+Rgb2CIELab	gslic/cudaImgTrans.cu	/^__host__ void Rgb2CIELab( uchar4* inputImg, float4* outputImg, int width, int height )$/;"	f
+Rgb2XYZ	gslic/cudaImgTrans.cu	/^__host__ void Rgb2XYZ( uchar4* inputImg, float4* outputImg, int width, int height )$/;"	f
+kRgb2CIELab	gslic/cudaImgTrans.cu	/^__global__ void kRgb2CIELab(uchar4* inputImg, float4* outputImg, int width, int height)$/;"	f
+kRgb2XYZ	gslic/cudaImgTrans.cu	/^__global__ void kRgb2XYZ(uchar4* inputImg, float4* outputImg, int width, int height)$/;"	f
+__CUDA_IMG_TRANS__	gslic/cudaImgTrans.h	2;"	d
+CUDALoadImg	gslic/cudaSegEngine.cu	/^extern "C" __host__ void CUDALoadImg(unsigned char* imgPixels)$/;"	f
+CopyCenterListDeviceToHost	gslic/cudaSegEngine.cu	/^__host__ void CopyCenterListDeviceToHost(SLICClusterCenter* centerList)$/;"	f
+CopyImgDeviceToHost	gslic/cudaSegEngine.cu	/^__host__ void CopyImgDeviceToHost( unsigned char* imgPixels, int width, int height)$/;"	f
+CopyMaskDeviceToHost	gslic/cudaSegEngine.cu	/^__host__ void CopyMaskDeviceToHost( int* maskPixels)$/;"	f
+CudaSegmentation	gslic/cudaSegEngine.cu	/^__host__ void CudaSegmentation(SEGMETHOD eSegmethod, double weight)$/;"	f
+InitCUDA	gslic/cudaSegEngine.cu	/^__host__ void InitCUDA(int width, int height,int nSegment, SEGMETHOD eMethod)$/;"	f
+TerminateCUDA	gslic/cudaSegEngine.cu	/^__host__ void TerminateCUDA()$/;"	f
+cudaIsInitialized	gslic/cudaSegEngine.cu	/^bool cudaIsInitialized=false;$/;"	v
+floatBuffer	gslic/cudaSegEngine.cu	/^__device__ float4* floatBuffer;$/;"	v
+maskBuffer	gslic/cudaSegEngine.cu	/^__device__ int* maskBuffer;$/;"	v
+nHeight	gslic/cudaSegEngine.cu	/^int nWidth,nHeight,nSeg,nMaxSegs;$/;"	v
+nMaxSegs	gslic/cudaSegEngine.cu	/^int nWidth,nHeight,nSeg,nMaxSegs;$/;"	v
+nSeg	gslic/cudaSegEngine.cu	/^int nWidth,nHeight,nSeg,nMaxSegs;$/;"	v
+nWidth	gslic/cudaSegEngine.cu	/^int nWidth,nHeight,nSeg,nMaxSegs;$/;"	v
+slicIsInitialized	gslic/cudaSegEngine.cu	/^bool slicIsInitialized=false;$/;"	v
+vSLICCenterList	gslic/cudaSegEngine.cu	/^__device__ SLICClusterCenter* vSLICCenterList;$/;"	v
+__CUDA_SEG_ENGINE__	gslic/cudaSegEngine.h	2;"	d
+FindNext	gslic/cudaSegSLIC.cu	/^void FindNext(const int* labels, int* nlabels, const int& height, const int& width, const int& h,const int& w,$/;"	f
+SLICImgSeg	gslic/cudaSegSLIC.cu	/^__host__ void SLICImgSeg(int* maskBuffer, float4* floatBuffer, $/;"	f
+dx4	gslic/cudaSegSLIC.cu	/^const int dx4[4] = {-1,  0,  1,  0};$/;"	v
+dy4	gslic/cudaSegSLIC.cu	/^const int dy4[4] = { 0, -1,  0,  1};$/;"	v
+enforceConnectivity	gslic/cudaSegSLIC.cu	/^void enforceConnectivity(int* maskBuffer,int width, int height, int nSeg)$/;"	f
+kInitClusterCenters	gslic/cudaSegSLIC.cu	/^__global__ void kInitClusterCenters( float4* floatBuffer, int nWidth, int nHeight, SLICClusterCenter* vSLICCenterList )$/;"	f
+kIterateKmeans	gslic/cudaSegSLIC.cu	/^__global__ void kIterateKmeans( int* maskBuffer, float4* floatBuffer, $/;"	f
+kUpdateClusterCenters	gslic/cudaSegSLIC.cu	/^__global__ void kUpdateClusterCenters( float4* floatBuffer,int* maskBuffer, int nWidth, int nHeight, int nSegs, SLICClusterCenter* vSLICCenterList, int listSize)$/;"	f
+SLICClusterCenter	gslic/cudaSegSLIC.h	/^}SLICClusterCenter;$/;"	t	typeref:struct:__anon4
+__CUDA_SEG_SLIC__	gslic/cudaSegSLIC.h	2;"	d
+lab	gslic/cudaSegSLIC.h	/^	float4 lab;$/;"	m	struct:__anon4
+nPoints	gslic/cudaSegSLIC.h	/^	int nPoints;$/;"	m	struct:__anon4
+x1	gslic/cudaSegSLIC.h	/^	int x1, y1, x2, y2;$/;"	m	struct:__anon4
+x2	gslic/cudaSegSLIC.h	/^	int x1, y1, x2, y2;$/;"	m	struct:__anon4
+xy	gslic/cudaSegSLIC.h	/^	float2 xy;$/;"	m	struct:__anon4
+y1	gslic/cudaSegSLIC.h	/^	int x1, y1, x2, y2;$/;"	m	struct:__anon4
+y2	gslic/cudaSegSLIC.h	/^	int x1, y1, x2, y2;$/;"	m	struct:__anon4
+Float1ToUchar1	gslic/cudaUtil.cu	/^__host__ void Float1ToUchar1(float1 *inputImage, uchar1 *outputImage, int width, int height)$/;"	f
+Float1ToUchar4	gslic/cudaUtil.cu	/^__host__ void Float1ToUchar4(float1 *inputImage, uchar4 *outputImage, int width, int height)$/;"	f
+Float2ToUchar1	gslic/cudaUtil.cu	/^__host__ void Float2ToUchar1(float2 *inputImage, uchar1 *outputImage, int width, int height, int index)$/;"	f
+Float2ToUchar4	gslic/cudaUtil.cu	/^__host__ void Float2ToUchar4(float2 *inputImage, uchar4 *outputImage, int width, int height, int index)$/;"	f
+Float4ToUchar4	gslic/cudaUtil.cu	/^__host__ void Float4ToUchar4(float4 *inputImage, uchar4 *outputImage, int width, int height)$/;"	f
+Uchar4ToFloat4	gslic/cudaUtil.cu	/^__host__ void Uchar4ToFloat4(uchar4 *inputImage, float4 *outputImage, int width, int height)$/;"	f
+float1toUchar1	gslic/cudaUtil.cu	/^__global__ void float1toUchar1(float1 *inputImage, uchar1 *outputImage, int width, int height)$/;"	f
+float1toUchar4	gslic/cudaUtil.cu	/^__global__ void float1toUchar4(float1 *inputImage, uchar4 *outputImage, int width, int height)$/;"	f
+float2toUchar1	gslic/cudaUtil.cu	/^__global__ void float2toUchar1(float2 *inputImage, uchar1 *outputImage, int width, int height, int index)$/;"	f
+float2toUchar4	gslic/cudaUtil.cu	/^__global__ void float2toUchar4(float2 *inputImage, uchar4 *outputImage, int width, int height, int index)$/;"	f
+float4toUchar4	gslic/cudaUtil.cu	/^__global__ void float4toUchar4(float4 *inputImage, uchar4 *outputImage, int width, int height)$/;"	f
+iAlignDown	gslic/cudaUtil.cu	/^__host__ int iAlignDown(int a, int b)  {return a - a % b; }$/;"	f
+iAlignUp	gslic/cudaUtil.cu	/^__host__ int iAlignUp(int a, int b) { return (a % b != 0) ?  (a - a % b + b) : a; }$/;"	f
+iClosestPowerOfTwo	gslic/cudaUtil.cu	/^__host__ int iClosestPowerOfTwo(int x) { x--; x |= x >> 1; x |= x >> 2; x |= x >> 4; x |= x >> 8; x |= x >> 16; x++; return x; }$/;"	f
+iDivDown	gslic/cudaUtil.cu	/^__host__ int iDivDown(int a, int b) { return a \/ b; }$/;"	f
+iDivUp	gslic/cudaUtil.cu	/^__host__ int iDivUp(int a, int b) { return (a % b != 0) ? (a \/ b + 1) : (a \/ b); }$/;"	f
+iDivUpF	gslic/cudaUtil.cu	/^__host__ int iDivUpF(int a, float b) { return (a % int(b) != 0) ? int(a \/ b + 1) : int(a \/ b);}$/;"	f
+uchar4tofloat4	gslic/cudaUtil.cu	/^__global__ void uchar4tofloat4(uchar4 *inputImage, float4 *outputImage, int width, int height)$/;"	f
+__CUDA_UTILS__	gslic/cudaUtil.h	2;"	d
+EXIT_WAIVED	helper_timer.h	17;"	d
+HELPER_TIMER_H	helper_timer.h	14;"	d
+StopWatchInterface	helper_timer.h	/^        StopWatchInterface() {};$/;"	f	class:StopWatchInterface
+StopWatchInterface	helper_timer.h	/^class StopWatchInterface$/;"	c
+StopWatchLinux	helper_timer.h	/^        StopWatchLinux() :$/;"	f	class:StopWatchLinux
+StopWatchLinux	helper_timer.h	/^class StopWatchLinux : public StopWatchInterface$/;"	c
+StopWatchWin	helper_timer.h	/^        StopWatchWin() :$/;"	f	class:StopWatchWin
+StopWatchWin	helper_timer.h	/^class StopWatchWin : public StopWatchInterface$/;"	c
+WINDOWS_LEAN_AND_MEAN	helper_timer.h	60;"	d
+clock_sessions	helper_timer.h	/^        int clock_sessions;$/;"	m	class:StopWatchLinux
+clock_sessions	helper_timer.h	/^        int clock_sessions;$/;"	m	class:StopWatchWin
+diff_time	helper_timer.h	/^        float  diff_time;$/;"	m	class:StopWatchLinux
+diff_time	helper_timer.h	/^        float  diff_time;$/;"	m	class:StopWatchWin
+end_time	helper_timer.h	/^        LARGE_INTEGER  end_time;$/;"	m	class:StopWatchWin
+freq	helper_timer.h	/^        double  freq;$/;"	m	class:StopWatchWin
+freq_set	helper_timer.h	/^        bool  freq_set;$/;"	m	class:StopWatchWin
+getAverageTime	helper_timer.h	/^StopWatchLinux::getAverageTime()$/;"	f	class:StopWatchLinux
+getAverageTime	helper_timer.h	/^StopWatchWin::getAverageTime()$/;"	f	class:StopWatchWin
+getDiffTime	helper_timer.h	/^StopWatchLinux::getDiffTime()$/;"	f	class:StopWatchLinux
+getTime	helper_timer.h	/^StopWatchLinux::getTime()$/;"	f	class:StopWatchLinux
+getTime	helper_timer.h	/^StopWatchWin::getTime()$/;"	f	class:StopWatchWin
+max	helper_timer.h	63;"	d
+min	helper_timer.h	62;"	d
+reset	helper_timer.h	/^StopWatchLinux::reset()$/;"	f	class:StopWatchLinux
+reset	helper_timer.h	/^StopWatchWin::reset()$/;"	f	class:StopWatchWin
+running	helper_timer.h	/^        bool running;$/;"	m	class:StopWatchLinux
+running	helper_timer.h	/^        bool running;$/;"	m	class:StopWatchWin
+sdkCreateTimer	helper_timer.h	/^sdkCreateTimer(StopWatchInterface **timer_interface)$/;"	f
+sdkDeleteTimer	helper_timer.h	/^sdkDeleteTimer(StopWatchInterface **timer_interface)$/;"	f
+sdkGetAverageTimerValue	helper_timer.h	/^sdkGetAverageTimerValue(StopWatchInterface **timer_interface)$/;"	f
+sdkGetTimerValue	helper_timer.h	/^sdkGetTimerValue(StopWatchInterface **timer_interface)$/;"	f
+sdkResetTimer	helper_timer.h	/^sdkResetTimer(StopWatchInterface **timer_interface)$/;"	f
+sdkStartTimer	helper_timer.h	/^sdkStartTimer(StopWatchInterface **timer_interface)$/;"	f
+sdkStopTimer	helper_timer.h	/^sdkStopTimer(StopWatchInterface **timer_interface)$/;"	f
+start	helper_timer.h	/^StopWatchLinux::start()$/;"	f	class:StopWatchLinux
+start	helper_timer.h	/^StopWatchWin::start()$/;"	f	class:StopWatchWin
+start_time	helper_timer.h	/^        LARGE_INTEGER  start_time;$/;"	m	class:StopWatchWin
+start_time	helper_timer.h	/^        struct timeval  start_time;$/;"	m	class:StopWatchLinux	typeref:struct:StopWatchLinux::timeval
+stop	helper_timer.h	/^StopWatchLinux::stop()$/;"	f	class:StopWatchLinux
+stop	helper_timer.h	/^StopWatchWin::stop()$/;"	f	class:StopWatchWin
+total_time	helper_timer.h	/^        float  total_time;$/;"	m	class:StopWatchLinux
+total_time	helper_timer.h	/^        float  total_time;$/;"	m	class:StopWatchWin
+~StopWatchInterface	helper_timer.h	/^        virtual ~StopWatchInterface() {};$/;"	f	class:StopWatchInterface
+~StopWatchLinux	helper_timer.h	/^        virtual ~StopWatchLinux()$/;"	f	class:StopWatchLinux
+~StopWatchWin	helper_timer.h	/^        ~StopWatchWin() { };$/;"	f	class:StopWatchWin
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+lbpRiu2	lbp.cpp	/^void lbpRiu2(const Mat& imgGrey, Mat& imgLBP)$/;"	f
+map_x	lbp.cpp	/^int map_x[]={-1, -1, -1,  0,  1,  1,  1,  0};$/;"	v
+map_y	lbp.cpp	/^int map_y[]={-1,  0,  1,  1,  1,  0, -1, -1};$/;"	v
+table_riu2	lbp.cpp	/^unsigned char table_riu2[256]={    $/;"	v
+LBP_H	lbp.h	2;"	d
+main	main.cpp	/^int main()$/;"	f
+Parallel_Cos	ransac_plain.cpp	/^    Parallel_Cos(const Mat &_img, Mat &_mask1, Mat &_mask2, Eigen::Vector4d &_model, double _threshold) : img(_img), mask1(_mask1), mask2(_mask2), model(_model)$/;"	f	class:RANSAC::Parallel_Cos
+Parallel_Cos	ransac_plain.cpp	/^    class Parallel_Cos: public ParallelLoopBody$/;"	c	namespace:RANSAC	file:
+RANSAC	ransac_plain.cpp	/^namespace RANSAC$/;"	n	file:
+cvtMaskn3	ransac_plain.cpp	/^    void cvtMaskn3(const Mat &mono, Mat &mask)$/;"	f	namespace:RANSAC
+getMonoMask	ransac_plain.cpp	/^    Vec4d getMonoMask($/;"	f	namespace:RANSAC
+img	ransac_plain.cpp	/^        const Mat img;$/;"	m	class:RANSAC::Parallel_Cos	file:
+mask1	ransac_plain.cpp	/^        Mat mask1;$/;"	m	class:RANSAC::Parallel_Cos	file:
+mask2	ransac_plain.cpp	/^        Mat mask2;$/;"	m	class:RANSAC::Parallel_Cos	file:
+model	ransac_plain.cpp	/^        Eigen::Vector4d model;$/;"	m	class:RANSAC::Parallel_Cos	file:
+operator ()	ransac_plain.cpp	/^    void operator() (const Range &r) const$/;"	f	class:RANSAC::Parallel_Cos
+ransacForPlane	ransac_plain.cpp	/^    static bool ransacForPlane($/;"	f	namespace:RANSAC
+threshold	ransac_plain.cpp	/^        double threshold;$/;"	m	class:RANSAC::Parallel_Cos	file:
+RANSAC	ransac_plain.h	/^namespace RANSAC$/;"	n
+RANSAC_PLAIN_H	ransac_plain.h	2;"	d
+DetectLabEdges	slic.cpp	/^void SLIC::DetectLabEdges($/;"	f	class:SLIC
+DoRGBtoLABConversion	slic.cpp	/^void SLIC::DoRGBtoLABConversion($/;"	f	class:SLIC
+DrawContoursAroundSegments	slic.cpp	/^void SLIC::DrawContoursAroundSegments($/;"	f	class:SLIC
+DrawContoursAroundSegmentsTwoColors	slic.cpp	/^void SLIC::DrawContoursAroundSegmentsTwoColors($/;"	f	class:SLIC
+EnforceLabelConnectivity	slic.cpp	/^void SLIC::EnforceLabelConnectivity($/;"	f	class:SLIC
+GetLABXYSeeds_ForGivenK	slic.cpp	/^void SLIC::GetLABXYSeeds_ForGivenK($/;"	f	class:SLIC
+GetLABXYSeeds_ForGivenStepSize	slic.cpp	/^void SLIC::GetLABXYSeeds_ForGivenStepSize($/;"	f	class:SLIC
+PerformSLICO_ForGivenK	slic.cpp	/^void SLIC::PerformSLICO_ForGivenK($/;"	f	class:SLIC
+PerformSLICO_ForGivenStepSize	slic.cpp	/^void SLIC::PerformSLICO_ForGivenStepSize($/;"	f	class:SLIC
+PerformSuperpixelSegmentation_VariableSandM	slic.cpp	/^void SLIC::PerformSuperpixelSegmentation_VariableSandM($/;"	f	class:SLIC
+PerturbSeeds	slic.cpp	/^void SLIC::PerturbSeeds($/;"	f	class:SLIC
+RGB2LAB	slic.cpp	/^void SLIC::RGB2LAB(const int& sR, const int& sG, const int& sB, double& lval, double& aval, double& bval)$/;"	f	class:SLIC
+RGB2XYZ	slic.cpp	/^void SLIC::RGB2XYZ($/;"	f	class:SLIC
+SLIC	slic.cpp	/^SLIC::SLIC()$/;"	f	class:SLIC
+SaveSuperpixelLabels	slic.cpp	/^void SLIC::SaveSuperpixelLabels($/;"	f	class:SLIC
+dx10	slic.cpp	/^const int dx10[10] = {-1,  0,  1,  0, -1,  1,  1, -1,  0, 0};$/;"	v
+dx4	slic.cpp	/^const int dx4[4] = {-1,  0,  1,  0};$/;"	v
+dy10	slic.cpp	/^const int dy10[10] = { 0, -1,  0,  1, -1, -1,  1,  1,  0, 0};$/;"	v
+dy4	slic.cpp	/^const int dy4[4] = { 0, -1,  0,  1};$/;"	v
+dz10	slic.cpp	/^const int dz10[10] = { 0,  0,  0,  0,  0,  0,  0,  0, -1, 1};$/;"	v
+~SLIC	slic.cpp	/^SLIC::~SLIC()$/;"	f	class:SLIC
+SLIC	slic.h	/^class SLIC  $/;"	c
+_SLIC_H_INCLUDED_	slic.h	25;"	d
+m_avec	slic.h	/^	double*									m_avec;$/;"	m	class:SLIC
+m_avecvec	slic.h	/^	double**								m_avecvec;$/;"	m	class:SLIC
+m_bvec	slic.h	/^	double*									m_bvec;$/;"	m	class:SLIC
+m_bvecvec	slic.h	/^	double**								m_bvecvec;$/;"	m	class:SLIC
+m_depth	slic.h	/^	int										m_depth;$/;"	m	class:SLIC
+m_height	slic.h	/^	int										m_height;$/;"	m	class:SLIC
+m_lvec	slic.h	/^	double*									m_lvec;$/;"	m	class:SLIC
+m_lvecvec	slic.h	/^	double**								m_lvecvec;$/;"	m	class:SLIC
+m_width	slic.h	/^	int										m_width;$/;"	m	class:SLIC
+TN	tr_detect.cpp	22;"	d	file:
+TRDetect	tr_detect.cpp	/^TRDetect::TRDetect(parameters param):$/;"	f	class:TRDetect
+TU	tr_detect.cpp	23;"	d	file:
+TY	tr_detect.cpp	21;"	d	file:
+doSegmentation	tr_detect.cpp	/^void TRDetect::doSegmentation()$/;"	f	class:TRDetect
+process	tr_detect.cpp	/^bool TRDetect::process(const Mat &imageL,const Mat &imageR)$/;"	f	class:TRDetect
+rebuildTRegion	tr_detect.cpp	/^void TRDetect::rebuildTRegion()$/;"	f	class:TRDetect
+rectifyWeight	tr_detect.cpp	/^void TRDetect::rectifyWeight()$/;"	f	class:TRDetect
+stereoMatch	tr_detect.cpp	/^void TRDetect::stereoMatch(const Mat &imageL,const Mat &imageR, Mat& disparity, Mat& pointCloud)$/;"	f	class:TRDetect
+updateGroundTruth	tr_detect.cpp	/^bool TRDetect::updateGroundTruth()$/;"	f	class:TRDetect
+updateLayer	tr_detect.cpp	/^void TRDetect::updateLayer()$/;"	f	class:TRDetect
+updateLayersPool	tr_detect.cpp	/^void TRDetect::updateLayersPool()$/;"	f	class:TRDetect
+updatelayersCur	tr_detect.cpp	/^void TRDetect::updatelayersCur()$/;"	f	class:TRDetect
+~TRDetect	tr_detect.cpp	/^TRDetect::~TRDetect()$/;"	f	class:TRDetect
+INFO_COL	tr_detect.h	/^        INFO_COL,$/;"	e	enum:TRDetect::__anon1
+INFO_NUM	tr_detect.h	/^        INFO_NUM,$/;"	e	enum:TRDetect::__anon1
+INFO_ROW	tr_detect.h	/^        INFO_ROW,$/;"	e	enum:TRDetect::__anon1
+INFO_SZ	tr_detect.h	/^        INFO_SZ,$/;"	e	enum:TRDetect::__anon1
+SADWindowSize	tr_detect.h	/^        int SADWindowSize;$/;"	m	struct:TRDetect::_camera
+TRD_METHOD_KINECT	tr_detect.h	/^        TRD_METHOD_KINECT$/;"	e	enum:TRDetect::__anon2
+TRD_METHOD_MONO	tr_detect.h	/^        TRD_METHOD_MONO,$/;"	e	enum:TRDetect::__anon2
+TRD_METHOD_STEREO	tr_detect.h	/^        TRD_METHOD_STEREO,$/;"	e	enum:TRDetect::__anon2
+TRDetect	tr_detect.h	/^class TRDetect$/;"	c
+TR_DECTECT_H	tr_detect.h	2;"	d
+_camera	tr_detect.h	/^        _camera()$/;"	f	struct:TRDetect::_camera
+_camera	tr_detect.h	/^    struct _camera \/\/ carema parameters, for stereo method$/;"	s	class:TRDetect
+_fm	tr_detect.h	/^        _fm()$/;"	f	struct:TRDetect::_fm
+_fm	tr_detect.h	/^    struct _fm \/\/ fundamentalMask config$/;"	s	class:TRDetect
+_seg	tr_detect.h	/^        _seg()$/;"	f	struct:TRDetect::_seg
+_seg	tr_detect.h	/^    struct _seg \/\/ segment parameters$/;"	s	class:TRDetect
+able_h	tr_detect.h	/^        float able_h,able_w;$/;"	m	struct:TRDetect::_fm
+able_w	tr_detect.h	/^        float able_h,able_w;$/;"	m	struct:TRDetect::_fm
+baseline	tr_detect.h	/^        double baseline;$/;"	m	struct:TRDetect::_camera
+calib	tr_detect.h	/^        _camera calib;$/;"	m	struct:TRDetect::parameters
+cu	tr_detect.h	/^        double cu;$/;"	m	struct:TRDetect::_camera
+cv	tr_detect.h	/^        double cv;$/;"	m	struct:TRDetect::_camera
+disparity	tr_detect.h	/^    cv::Mat disparity;       \/\/ only available for TRD_METHOD_STEREO$/;"	m	class:TRDetect
+elm	tr_detect.h	/^    ELM* elm;$/;"	m	class:TRDetect
+elm_af	tr_detect.h	/^        int elm_af;$/;"	m	class:TRDetect::network
+f	tr_detect.h	/^        double f;$/;"	m	struct:TRDetect::_camera
+fm	tr_detect.h	/^        _fm fm;$/;"	m	struct:TRDetect::parameters
+fundamentalMask	tr_detect.h	/^    cv::Mat fundamentalMask; \/\/ CV_8U$/;"	m	class:TRDetect
+groundTruth	tr_detect.h	/^    cv::Mat groundTruth;     \/\/ CV_8U$/;"	m	class:TRDetect
+imgColorL	tr_detect.h	/^    cv::Mat imgColorL;       \/\/ available for all method$/;"	m	class:TRDetect
+imgColorR	tr_detect.h	/^    cv::Mat imgColorR;$/;"	m	class:TRDetect
+imgHSV	tr_detect.h	/^    cv::Mat imgHSV;$/;"	m	class:TRDetect
+imgLBP	tr_detect.h	/^    cv::Mat imgLBP;$/;"	m	class:TRDetect
+imgMonoL	tr_detect.h	/^    cv::Mat imgMonoL;        \/\/ available for all method$/;"	m	class:TRDetect
+imgMonoR	tr_detect.h	/^    cv::Mat imgMonoR;$/;"	m	class:TRDetect
+imgProb	tr_detect.h	/^        cv::Mat imgProb;   \/\/      float$/;"	m	struct:TRDetect::layerFeature
+imgScale	tr_detect.h	/^        float imgScale;$/;"	m	struct:TRDetect::parameters
+imgSeg	tr_detect.h	/^        cv::Mat imgSeg;    \/\/      uint$/;"	m	struct:TRDetect::layerFeature
+imgSize	tr_detect.h	/^        cv::Size imgSize;$/;"	m	struct:TRDetect::parameters
+info	tr_detect.h	/^        cv::Mat info;      \/\/ N*3  uint $/;"	m	struct:TRDetect::layerFeature
+input	tr_detect.h	/^        cv::Mat input;     \/\/ N*55 float$/;"	m	struct:TRDetect::layerFeature
+k	tr_detect.h	/^        std::vector<int> k;        \/\/ number of superpixels for each scale$/;"	m	struct:TRDetect::_seg
+lambda	tr_detect.h	/^        float lambda;$/;"	m	class:TRDetect::network
+layer	tr_detect.h	/^    layerFeature* layer;$/;"	m	class:TRDetect
+layerFeature	tr_detect.h	/^        layerFeature()$/;"	f	struct:TRDetect::layerFeature
+layerFeature	tr_detect.h	/^    struct layerFeature$/;"	s	class:TRDetect
+layersCur	tr_detect.h	/^    layerFeature  layersCur;$/;"	m	class:TRDetect
+layersPool	tr_detect.h	/^    layerFeature  layersPool;$/;"	m	class:TRDetect
+method	tr_detect.h	/^        int method;$/;"	m	struct:TRDetect::parameters
+minDisparity	tr_detect.h	/^        int minDisparity;$/;"	m	struct:TRDetect::_camera
+nBin_H	tr_detect.h	/^        const int nBin_H;$/;"	m	class:TRDetect::network
+nBin_LBP	tr_detect.h	/^        const int nBin_LBP;$/;"	m	class:TRDetect::network
+nBin_S	tr_detect.h	/^        const int nBin_S;$/;"	m	class:TRDetect::network
+nBin_V	tr_detect.h	/^        const int nBin_V;$/;"	m	class:TRDetect::network
+nHiddenNeurons	tr_detect.h	/^        int nHiddenNeurons;$/;"	m	class:TRDetect::network
+nInputNeurons	tr_detect.h	/^        const int nInputNeurons;$/;"	m	class:TRDetect::network
+nOutputNeurons	tr_detect.h	/^        const int nOutputNeurons;$/;"	m	class:TRDetect::network
+nSuperpixels	tr_detect.h	/^        int nSuperpixels;$/;"	m	struct:TRDetect::layerFeature
+net	tr_detect.h	/^        network net;$/;"	m	struct:TRDetect::parameters
+network	tr_detect.h	/^        network():$/;"	f	class:TRDetect::network
+network	tr_detect.h	/^    class network \/\/ neural network parameters$/;"	c	class:TRDetect
+numItr	tr_detect.h	/^        int numItr;                \/\/ number of iteration when performing SLIC$/;"	m	struct:TRDetect::_seg
+numScale	tr_detect.h	/^        int numScale;              \/\/ number of scale, should be odd$/;"	m	struct:TRDetect::_seg
+numberOfDisparities	tr_detect.h	/^        int numberOfDisparities;$/;"	m	struct:TRDetect::_camera
+output	tr_detect.h	/^        cv::Mat output;    \/\/ N*2  float$/;"	m	struct:TRDetect::layerFeature
+outputWeight	tr_detect.h	/^    cv::Mat outputWeight;$/;"	m	class:TRDetect
+param	tr_detect.h	/^    parameters param;$/;"	m	class:TRDetect
+parameters	tr_detect.h	/^        parameters()$/;"	f	struct:TRDetect::parameters
+parameters	tr_detect.h	/^    struct parameters$/;"	s	class:TRDetect
+pointCloud	tr_detect.h	/^    cv::Mat pointCloud;      \/\/ not available for TRD_METHOD_MONO$/;"	m	class:TRDetect
+result	tr_detect.h	/^    cv::Mat result;          \/\/ CV_8U$/;"	m	class:TRDetect
+resultProb	tr_detect.h	/^    cv::Mat resultProb;      \/\/ CV_32F$/;"	m	class:TRDetect
+roadPriority	tr_detect.h	/^        float roadPriority;$/;"	m	class:TRDetect::network
+seg	tr_detect.h	/^        _seg seg;$/;"	m	struct:TRDetect::parameters
+sigma	tr_detect.h	/^        float sigma;$/;"	m	class:TRDetect::network
+sz	tr_detect.h	/^    cv::Size sz;$/;"	m	class:TRDetect
+unable_h	tr_detect.h	/^        float unable_h,unable_w;$/;"	m	struct:TRDetect::_fm
+unable_w	tr_detect.h	/^        float unable_h,unable_w;$/;"	m	struct:TRDetect::_fm
+weight	tr_detect.h	/^        cv::Mat weight;    \/\/ N*1  float$/;"	m	struct:TRDetect::layerFeature
+weight	tr_detect.h	/^        std::vector<float> weight; \/\/ weight for each scale when training$/;"	m	struct:TRDetect::_seg
