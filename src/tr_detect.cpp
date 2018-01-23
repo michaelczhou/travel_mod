@@ -1009,7 +1009,7 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 	//only do segmentation once and the number of SP is 180;
     int n=2;
 	int& nSuperpixels = layer[n].nSuperpixels;
-    //这是什么写法?
+    //引用
 	// cpu slic
 	SLIC mySeg;
 	layer[n].imgSeg.create(sz, CV_32S);
