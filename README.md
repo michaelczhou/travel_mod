@@ -1,5 +1,8 @@
 # travel_mod
-road detect
+road detect/classification
+## 1.模型训练
+### 1.TRDetect::extract(int label)或者TRDetect::simpleExtract(const Mat &img, int num)生成向量文档.
+
 ### 1.opencv error
 ```
 OpenCV Error: Assertion failed (ssize.area() > 0) in resize, file /home/zc/tools/opencv-2.4.13/modules/imgproc/src/imgwarp.cpp, line 1968

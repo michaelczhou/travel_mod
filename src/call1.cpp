@@ -77,8 +77,8 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 int main(){
 
 	//更改数据集的地址
-    string path = "/home/zc/Downloads/datesets/Kitti/sequences/00/image_0/";
-    string path2= "/home/zc/Downloads/datesets/Kitti/sequences/00/image_1/";
+    string path = "/home/zc/Downloads/datesets/data2018/left/";
+    string path2= "/home/zc/Downloads/datesets/data2018/right/";
 
 	TRDetect::parameters param;
 
@@ -88,7 +88,7 @@ int main(){
 	//1.读取图片及其尺寸
 	//param.imgSize = imgl.size();
 	//2.或者在知道尺寸的情况下直接size=（640，480）
-    param.imgSize = cv::Size(1241,376);
+    param.imgSize = cv::Size(1024,768);
 
 	param.calib.cu = 321.93585;
 	param.calib.cv = 245.76448;
@@ -117,7 +117,7 @@ int main(){
     //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
 
-    for(int i=1000; i<4000; i++) //step into the loop
+    for(int i=100; i<702; i++) //step into the loop
 	{
 		//to fix the problem the filename
 		//sa是序号，filename是特征提取后保存的文件名
@@ -127,8 +127,8 @@ int main(){
 		sa =a;
         //std::cout << sa << std::endl;
 		
-        Mat imgl = imread(path + sa + ".png");
-        Mat imgr = imread(path2 + sa + ".png");
+        Mat imgl = imread(path + sa + ".jpg");
+        Mat imgr = imread(path2 + sa + ".jpg");
 
         call(imgl, imgr, sout, sResult,trd,1);
 	}
