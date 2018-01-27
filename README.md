@@ -1,6 +1,15 @@
 # travel_mod
 road detect/classification
 ## 1.模型训练
+### 1.每张图片生成一个feature.txt文件,合成一个总的txt.
+注意图片的顺序,正负样本的分离,可将原来的txt适当混入
+### 2.运行MATLAB,利用svm训练生成新的model.
+model文件是怎么生成的?
+ ./svm-train -c 1 -g 0.07 -b 1 train0603.txt t.model
+
+
+-----
+遇到的问题:
 ### 1.TRDetect::extract(int label)或者TRDetect::simpleExtract(const Mat &img, int num)生成向量文档.
 
 ### 1.opencv error

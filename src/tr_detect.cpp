@@ -996,8 +996,9 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 	Mat tmp;
 	resize(img,tmp,Size(208,156));
 	cvtColor(tmp, imgMonoL, CV_BGR2GRAY);
-	cvtColor(tmp, imgHSV, CV_BGR2HSV); // HSV
+    cvtColor(tmp, imgHSV, CV_BGR2HSV); // HSV(hue,saturation,value)颜色空间的模型对应于圆柱坐标系中的一个圆锥形子集
     lbpRiu2(imgMonoL, imgLBP);
+    //描述局部纹理特征?
 
 	//1st  do the segmentation
 	///////////////////////////
@@ -1012,6 +1013,7 @@ void TRDetect::simpleExtract(const Mat &img, int num)
     //引用
 	// cpu slic
 	SLIC mySeg;
+    //SLIC超像素分割
 	layer[n].imgSeg.create(sz, CV_32S);
 	Mat imgSeg = layer[n].imgSeg;
 	mySeg.PerformSLICO_ForGivenK( buff, sz.width, sz.height, 

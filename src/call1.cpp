@@ -29,7 +29,7 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 		sdkResetTimer(&timer);
 		sdkStartTimer(&timer);
 		trd.process(imgl,imgr);
-		//trd.addLabel(label);
+        //trd.addLabel(label);
 		//保存标注以后的可行域图片
 		//imwrite(path +"new/" +sa +"labeled"+ ".jpg",trd.addLabel(label));
 		//显示结果
@@ -107,7 +107,7 @@ int main(){
 
 	param.net.elm_af = ELM::ELM_AF_SIGMOID;
 
-	TRDetect trd(param);
+    TRDetect trd(param);//init TRDetect
 
 	
 
