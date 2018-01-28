@@ -20,14 +20,18 @@ LIST(REMOVE_ITEM  srcfile
 ${CMAKE_CURRENT_SOURCE_DIR}/src/main_travelablev3.cpp
 )
 
-if(NOT CUDA_FOUND)
-	message( STATUS "The PROJECT will run without GPU")
-    ADD_EXECUTABLE(call1 ${srcfile} ${headfile} ${cvblobfile})
-elseif( CUDA_FOUND )
-    CUDA_ADD_EXECUTABLE(travel ${srcfile} ${headfile} ${gslicfile} ${cvblobfile})
-    #MESSAGE(STATUS 'OpenCV_LIBS: ${CUDA_LIBS}')
-endif(NOT CUDA_FOUND)
+#if(NOT CUDA_FOUND)
+#	message( STATUS "The PROJECT will run without GPU")
+#    ADD_EXECUTABLE(train ${srcfile} ${headfile} ${cvblobfile})
+#elseif( CUDA_FOUND )
+#    CUDA_ADD_EXECUTABLE(train ${srcfile} ${headfile} ${gslicfile} ${cvblobfile})
+#    #MESSAGE(STATUS 'OpenCV_LIBS: ${CUDA_LIBS}')
+#endif(NOT CUDA_FOUND)
 
+#TARGET_LINK_LIBRARIES(train ${OpenCV_LIBS})
+
+
+ADD_EXECUTABLE(call1 ${srcfile} ${headfile} ${cvblobfile})
 TARGET_LINK_LIBRARIES(call1 ${OpenCV_LIBS})
 
 # Set optimized building:

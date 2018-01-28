@@ -69,6 +69,94 @@ TRDetect::~TRDetect()
     delete []layer;
 }
 
+bool TRDetect::process(const Mat &image)
+{
+    // Get image ready
+    // --------------------------------------------------
+
+    // imgColorL
+    // pointCloud
+    int rsMethod = param.imgScale < 1.0f ? INTER_AREA:INTER_CUBIC;
+    resize(image, imgColor, Size(), param.imgScale, param.imgScale, rsMethod);
+    cvtColor(imgColor, imgMono, CV_BGR2GRAY);
+
+    if(param.method != TRD_METHOD_MONO)
+    pointCloud = image.clone();
+
+
+    // get ground truth for each method
+    // TRD_METHOD_MONO   - fundamentalMask
+    // TRD_METHOD_STEREO - imgMonoL, imgMonoR
+    // TRD_METHOD_KINECT - pointCloud
+    bool flagTrain = updateGroundTruth();
+
+    // Mat addd;
+    // RANSAC::cvtMaskn3(groundTruth, addd);
+    // Mat show = 0.75*imgColorL+ 0.25*addd;
+    // imshow("show",show);
+
+    /////////////////////////////////////////////////////////////////////////
+    // Now we get imgColorL, imgMonoL, groundTruth and model for all method
+    // Start processing ...
+
+    // Get features
+    cvtColor(imgColor, imgHSV, CV_BGR2HSV); // HSV
+    lbpRiu2(imgMono, imgLBP);               // LBP
+    doSegmentation();                        // SLIC
+
+    // Extract data from feature
+    updateLayer();
+
+    // ELM train if outputWeight is empty
+    if(outputWeight.empty())
+    {
+        if(!flagTrain)
+            return false;
+
+        // Update layersCur and rectify weight
+        updatelayersCur();
+        rectifyWeight();
+
+        // ELM train
+        elm->train(layersCur.input, layersCur.output, outputWeight, layersCur.weight);
+    }
+
+    // ELM predict
+    for(int n=0; n<param.seg.numScale; ++n)
+    {
+        elm->predict(layer[n].input, layer[n].output, outputWeight);
+    }
+
+    // Rebuild traversable region
+    rebuildTRegion();
+
+    // Mat sss = 0.75*imgMonoL+0.25*result;
+    // imshow("res",result);
+
+    ///////////////////////
+    ////////////////////
+    ////////////
+    //add
+    ////
+
+    if(!flagTrain)
+        return false;
+
+    // Update layersCur and rectify weight
+    updatelayersCur();
+    rectifyWeight();
+
+    // Update layersPool
+    updateLayersPool();
+
+    // ELM train
+    // cout<<layersPool.input.rows<<endl;
+    elm->train(layersPool.input, layersPool.output, outputWeight, layersPool.weight);
+
+    return true;
+}
+
+
 bool TRDetect::process(const Mat &imageL,const Mat &imageR)
 {
     // Get image ready

@@ -77,10 +77,10 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 int main(){
 
 	//更改数据集的地址
-//    string path = "/home/zc/Downloads/datesets/data2018/left/";
-//    string path2= "/home/zc/Downloads/datesets/data2018/right/";
-    string path = "/home/zc/Downloads/datesets/data2018/g/";
-    string path2= "/home/zc/Downloads/datesets/data2018/g/";
+    string path = "/home/zc/Downloads/datesets/data2018/left/";
+    string path2= "/home/zc/Downloads/datesets/data2018/right/";
+//    string path = "/home/zc/Downloads/datesets/data2018/g/";
+//    string path2= "/home/zc/Downloads/datesets/data2018/g/";
 	TRDetect::parameters param;
 
 	//设置一系列参数，这部分不能参与循环
@@ -118,7 +118,7 @@ int main(){
     //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
 
-    for(int i=1; i<634; i++) //step into the loop
+    for(int i=100; i<634; i++) //step into the loop
 	{
 		//to fix the problem the filename
 		//sa是序号，filename是特征提取后保存的文件名

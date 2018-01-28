@@ -141,6 +141,7 @@ public:
 
     // the second parameter can be Mat(), imgR or pointCloud
     bool process(const cv::Mat &imageL, const cv::Mat &imageR);
+    bool process(const cv::Mat &image);
 	void extract(int label);  //get testing data
 	void simpleExtract(const cv::Mat &img, int num);  //get training data
 
@@ -160,6 +161,8 @@ private:
 
     cv::Mat imgColorL;       // available for all method
     cv::Mat imgColorR;
+    cv::Mat imgColor;
+    cv::Mat imgMono;
     cv::Mat imgMonoL;        // available for all method
     cv::Mat imgMonoR;
     cv::Mat disparity;       // only available for TRD_METHOD_STEREO

@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "helper_timer.h"
@@ -15,7 +15,7 @@ int main()
 
     param.method = TRDetect::TRD_METHOD_MONO;
     param.imgScale = 0.325f;
-    param.imgSize = Size(752,480);
+    param.imgSize = Size(1024,768);
 
     param.calib.cu = 321.93585;
     param.calib.cv = 245.76448;
@@ -36,7 +36,7 @@ int main()
 
     TRDetect trd(param);
 
-    string path = "/home/zc/Downloads/datesets/data2018/g/";
+    string path = "/home/zc/Downloads/datesets/data2018/g7/";
 
     int step = 1;
     //the number for the txt file
@@ -74,11 +74,11 @@ int main()
         trd.process(img);
         trd.addLabel(label);
         //保存标注以后的可行域图片
-        //imwrite(path +"new/" +sa +"labeled"+ ".jpg",trd.addLabel(label));
+        imwrite(basename +"new/" +sa +"labeled"+ ".jpg",trd.addLabel(label));
         //显示结果
         sResult=trd.getSresult();
         //使用svmpredict来对测试集预测，后续还要在线显示
-        //判断sa+feature文件是否存在，若不存在，跳过predict
+        //判断标注文件 sa+.txt 文件是否存在，若不存在，跳过predict
         //直接使用之前的output文件
         FILE *fpFeature=NULL;//需要注意
         fpFeature=fopen(filename,"r");
@@ -87,40 +87,32 @@ int main()
             char *argv[] = {"", filename, "train0319.model", "output.txt"};
             svmPredict(4,argv);
         }
+        //根据output的结果输出可行域类别分类结果
+        //写在outputVote.cpp里面
+        terrainType=outputVote(type);
+        switch (terrainType)
+        {
+        case 'a':
+            putText(sResult,"asphalt",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
+            break;
+        case 'g':
+            putText(sResult,"grass",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
+            break;
+        case 's':
+            putText(sResult,"sand",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
+            break;
+        default:
+            putText(sResult,"unknown",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
+            break;
+        }
 
+        //putText(sResult,"type",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/200, cvScalar(0, 0, 200, 0));
+        imshow("result",sResult);
+        waitKey(1);
+        sdkStopTimer(&timer);
+        printf("time spent: %.2fms\n", sdkGetTimerValue(&timer));
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    waitKey(0);
 }
 #endif
