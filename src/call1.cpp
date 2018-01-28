@@ -77,16 +77,17 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 int main(){
 
 	//更改数据集的地址
-    string path = "/home/zc/Downloads/datesets/data2018/left/";
-    string path2= "/home/zc/Downloads/datesets/data2018/right/";
-
+//    string path = "/home/zc/Downloads/datesets/data2018/left/";
+//    string path2= "/home/zc/Downloads/datesets/data2018/right/";
+    string path = "/home/zc/Downloads/datesets/data2018/g/";
+    string path2= "/home/zc/Downloads/datesets/data2018/g/";
 	TRDetect::parameters param;
 
 	//设置一系列参数，这部分不能参与循环
 	param.method = TRDetect::TRD_METHOD_STEREO;
 	param.imgScale = 0.325f;
 	//1.读取图片及其尺寸
-	//param.imgSize = imgl.size();
+    //param.imgSize = imgl.size();
 	//2.或者在知道尺寸的情况下直接size=（640，480）
     param.imgSize = cv::Size(1024,768);
 
@@ -117,7 +118,7 @@ int main(){
     //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
 
-    for(int i=100; i<702; i++) //step into the loop
+    for(int i=1; i<634; i++) //step into the loop
 	{
 		//to fix the problem the filename
 		//sa是序号，filename是特征提取后保存的文件名
