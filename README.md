@@ -1,11 +1,15 @@
 # travel_mod
 road detect/classification
 ## 1.模型训练
-### 1.每张图片生成一个feature.txt文件,合成一个总的txt.
+### 1.图片特征向量生成
+每张图片使用train.cpp生成一个.txt文件,
+MixTxt.m合成一个总的txt.
 注意图片的顺序,正负样本的分离,可将原来的txt适当混入
-### 2.运行MATLAB,利用svm训练生成新的model.
-model文件是怎么生成的?
- ./svm-train -c 1 -g 0.07 -b 1 train0603.txt t.model
+### 2.利用svm训练生成新的model.
+cd 到libsvm-3.21文件夹
+命令端输入:
+make
+ ./svm-train -c 1 -g 0.07 -b 1 -h 0 train0603.txt t.model
 
 
 -----
