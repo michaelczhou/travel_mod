@@ -1,3 +1,4 @@
+#if 0
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "helper_timer.h"
@@ -134,3 +135,4 @@ int main(){
         call(imgl, imgr, sout, sResult,trd,1);
 	}
 }
+#endif

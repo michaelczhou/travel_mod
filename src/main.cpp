@@ -1,3 +1,4 @@
+#if 0
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "helper_timer.h"
@@ -147,3 +148,4 @@ int main1()
 	}
 	waitKey(0);
 }
+#endif

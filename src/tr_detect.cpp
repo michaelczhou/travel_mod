@@ -1181,15 +1181,15 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 		FILE*fp=NULL;//需要注意
 		//文件名是变量
 		char filename[30]={0};
-		string file = "g"+to_string(num)+".txt";
+        string file = "g"+to_string(num)+".txt";
 		const char* chfile = file.c_str();
 		strcpy(filename,chfile);
 		
-		fp=fopen(filename,"a");  //创建文件
+        fp=fopen(filename,"a");  //创建文件
 		//if(NULL==fp) return -1;//要返回错误代码
 		//while(scanf("%c",&c)!=EOF)
 		//add the label first, 1 for asphalt, 2 for grass, 3 for sand
-		fprintf(fp,"%d ",2);
+        fprintf(fp,"%d ",2);
 		for(int j=0;j<55;j++){			
 			
 			fprintf(fp,"%d:",j+1); //从控制台中读入并在文本输出

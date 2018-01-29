@@ -1,21 +1,23 @@
-#if 0
+#if 1
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "helper_timer.h"
 #include "tr_detect.h"
 #include "svm.h"
 #include "svm-predict.h"
+
 using namespace cv;
 using namespace std;
 
-char outputVote(char type[]);
 int main()
 {
     TRDetect::parameters param;
 
     param.method = TRDetect::TRD_METHOD_MONO;
     param.imgScale = 0.325f;
-    param.imgSize = Size(1024,768);
+    //每次要改变图像尺寸啦！！！
+    param.imgSize = Size(208,156);
+    //param.imgSize = imgl.size();
 
     param.calib.cu = 321.93585;
     param.calib.cv = 245.76448;
@@ -33,86 +35,30 @@ int main()
     param.seg.weight = w;
 
     param.net.elm_af = ELM::ELM_AF_SIGMOID;
-
+    //init TRDetect
     TRDetect trd(param);
 
-    string path = "/home/zc/Downloads/datesets/data2018/g7/";
+    string path = "/home/zc/Downloads/datesets/data2018/g/";
 
-    int step = 1;
-    //the number for the txt file
-    int line = 0;
-    StopWatchInterface *timer = NULL;
-    sdkCreateTimer(&timer);
-    sdkStartTimer(&timer);
-    //初始化label
-    int label=2;
-    char terrainType;
-    Mat sResult;
+    int num = 1;
 
-    //创建一个数组,存的是前面几帧的label
-    char type[10] = {'0'};
-
-    string basename = "/home/zc/project/travel_mod-build/label/";
-
-    for (int i = 1;i < 200;i = i + step)
+    for(int i = 1;i < 636;i++)
     {
         char a[10];
         string sa;
         sprintf(a,"%06d",i);
         sa = a;
 
-        char filename[100]= {0};
-        string file = basename +sa+".txt";
-        const char* chfile = file.c_str();
-        strcpy(filename,chfile);
-
         Mat img = imread(path + sa + ".jpg");
 
-        //更改数据库的复制终止点
-        sdkResetTimer(&timer);
-        sdkStartTimer(&timer);
-        trd.process(img);
-        trd.addLabel(label);
-        //保存标注以后的可行域图片
-        imwrite(basename +"new/" +sa +"labeled"+ ".jpg",trd.addLabel(label));
-        //显示结果
-        sResult=trd.getSresult();
-        //使用svmpredict来对测试集预测，后续还要在线显示
-        //判断标注文件 sa+.txt 文件是否存在，若不存在，跳过predict
-        //直接使用之前的output文件
-        FILE *fpFeature=NULL;//需要注意
-        fpFeature=fopen(filename,"r");
-        if(NULL==fpFeature) continue;
-        else{
-            char *argv[] = {"", filename, "train0319.model", "output.txt"};
-            svmPredict(4,argv);
-        }
-        //根据output的结果输出可行域类别分类结果
-        //写在outputVote.cpp里面
-        terrainType=outputVote(type);
-        switch (terrainType)
-        {
-        case 'a':
-            putText(sResult,"asphalt",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
-            break;
-        case 'g':
-            putText(sResult,"grass",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
-            break;
-        case 's':
-            putText(sResult,"sand",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
-            break;
-        default:
-            putText(sResult,"unknown",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
-            break;
-        }
-
-        //putText(sResult,"type",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/200, cvScalar(0, 0, 200, 0));
-        imshow("result",sResult);
+        trd.simpleExtract(img,num);
+        num++;
+        imshow("show",img);
         waitKey(1);
-        sdkStopTimer(&timer);
-        printf("time spent: %.2fms\n", sdkGetTimerValue(&timer));
+
 
     }
-    waitKey(0);
+    return 0;
 }
+
 #endif
