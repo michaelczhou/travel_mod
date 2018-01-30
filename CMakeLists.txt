@@ -31,8 +31,8 @@ endif(NOT CUDA_FOUND)
 TARGET_LINK_LIBRARIES(train ${OpenCV_LIBS})
 
 
-#ADD_EXECUTABLE(call1 ${srcfile} ${headfile} ${cvblobfile})
-#TARGET_LINK_LIBRARIES(call1 ${OpenCV_LIBS})
+ADD_EXECUTABLE(call1 ${srcfile} ${headfile} ${cvblobfile})
+TARGET_LINK_LIBRARIES(call1 ${OpenCV_LIBS})
 
 # Set optimized building:
 if( CMAKE_BUILD_TYPE MATCHES "Debug" )

@@ -1,4 +1,4 @@
-#if 0
+#if 1
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "helper_timer.h"
@@ -41,7 +41,7 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 		trd.extract(label);
 
 		//使用svmpredict来对测试集预测，后续还要在线显示
-		char *argv[] = {"", "feature.txt", "train0319.model", "output.txt"};
+        char *argv[] = {"", "feature.txt", "train0319.model", "output.txt"};
 		svmPredict(4,argv);
 		
 		//根据output的结果输出可行域类别分类结果
@@ -119,7 +119,7 @@ int main(){
     //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
 
-    for(int i=100; i<634; i++) //step into the loop
+    for(int i=100; i<700; i++) //step into the loop
 	{
 		//to fix the problem the filename
 		//sa是序号，filename是特征提取后保存的文件名

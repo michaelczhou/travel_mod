@@ -1081,8 +1081,12 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 {
 	//0 get img ready
 	/////////////////////
-	Mat tmp;
-	resize(img,tmp,Size(208,156));
+
+    Mat tmp1;
+    resize(img,tmp1,Size(480,320));
+    Mat tmp;
+    tmp = tmp1(Rect(160,200,160,120));
+
 	cvtColor(tmp, imgMonoL, CV_BGR2GRAY);
     cvtColor(tmp, imgHSV, CV_BGR2HSV); // HSV(hue,saturation,value)颜色空间的模型对应于圆柱坐标系中的一个圆锥形子集
     lbpRiu2(imgMonoL, imgLBP);

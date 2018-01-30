@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "helper_timer.h"
@@ -42,7 +42,7 @@ int main()
 
     int num = 1;
 
-    for(int i = 1;i < 636;i++)
+    for(int i = 1;i < 441;i++)
     {
         char a[10];
         string sa;
@@ -51,9 +51,11 @@ int main()
 
         Mat img = imread(path + sa + ".jpg");
 
+
+        //imshow("show",imageROI);
         trd.simpleExtract(img,num);
         num++;
-        imshow("show",img);
+
         waitKey(1);
 
 
