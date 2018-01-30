@@ -41,8 +41,9 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 		trd.extract(label);
 
 		//使用svmpredict来对测试集预测，后续还要在线显示
-        char *argv[] = {"", "feature.txt", "train0319.model", "output.txt"};
-		svmPredict(4,argv);
+        char *argv[] = {"", "feature.txt", "train0130_true.model", "output.txt"};  //groundtrue train
+        //char *argv[] = {"", "feature.txt", "train0319.model", "output.txt"};
+        svmPredict(4,argv);
 		
 		//根据output的结果输出可行域类别分类结果
 		//写在outputVote.cpp里面
@@ -119,7 +120,7 @@ int main(){
     //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
 
-    for(int i=100; i<700; i++) //step into the loop
+    for(int i=100; i<702; i++) //step into the loop
 	{
 		//to fix the problem the filename
 		//sa是序号，filename是特征提取后保存的文件名

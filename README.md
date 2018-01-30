@@ -5,14 +5,25 @@ road detect/classification
 每张图片使用train.cpp生成一个.txt文件,
 MixTxt.m合成一个总的txt.
 注意图片的顺序,正负样本的分离,可将原来的txt适当混入
-### 2.利用svm训练生成新的model.
+### 2.matlab调整svm的参数
+>>[label,inst] = libsvmread('./***.txt);
+%Split Data
+>>train_data = inst(1:40000,:);
+>>train_label = label(1:40000,:);
+>>test_data = inst(40001:61848,:);
+>>test_label = label(40001:61848,:);
+%Linear Kernel
+>>model_linear = svmtrain(train_label, train_data, '-t 0');
+>>[predict_label_L, accuracy_L, dec_values_L] = svmpredict(test_label, test_data, model_linear);
+>>accuracy_L % Display the accuracy using linear kernel
+### 3.利用svm训练生成新的model.
 cd 到libsvm-3.21文件夹
 命令端输入:
 make
  ./svm-train -c 1 -g 0.07 -b 1 -h 0 train0603.txt t.model
 
 
------
+-----------
 遇到的问题:
 ### 1.TRDetect::extract(int label)或者TRDetect::simpleExtract(const Mat &img, int num)生成向量文档.
 
