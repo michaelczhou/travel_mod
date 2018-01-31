@@ -7,11 +7,12 @@ MixTxt.m合成一个总的txt.
 注意图片的顺序,正负样本的分离,可将原来的txt适当混入
 ### 2.matlab调整svm的参数
 >>[label,inst] = libsvmread('./***.txt);
+>>L = randperm( length(label) );
 %Split Data
->>train_data = inst(1:40000,:);
->>train_label = label(1:40000,:);
->>test_data = inst(40001:61848,:);
->>test_label = label(40001:61848,:);
+>>train_data = inst(L(1:40000),:);
+>>train_label = label(L(1:40000),:);
+>>test_data = inst(L(40001:61848),:);
+>>test_label = label(L(40001:61848),:);
 %Linear Kernel
 >>model_linear = svmtrain(train_label, train_data, '-c 1 -g 0.5 -h 1'); 
 %-c惩罚因子; -g 核函数参数,输入数据中的属性数,默认类别数目的倒数;调参的主要方法有Gridsearch,即穷举.
