@@ -922,7 +922,7 @@ void TRDetect::extract(int label)
     const unsigned int* buff = (const unsigned int*)tmp.data;
 
 	//only do segmentation once and the number of SP is 180;
-    int n=1;
+    int n=2;
 	int& nSuperpixels = layer[n].nSuperpixels;
 	// cpu slic
 	SLIC mySeg;
@@ -1087,18 +1087,22 @@ void TRDetect::simpleExtract2(const Mat &img,int label)
     ///////////////////////////
     /// \brief tmp1
     //直方图均衡化
-//    Mat imageRGB[3];
-//    split(img, imageRGB);
-//    for (int i = 0; i < 3; i++)
-//    {
-//       equalizeHist(imageRGB[i], imageRGB[i]);
-//    }
-//    merge(imageRGB, 3, img);
+    Mat imageRGB[3];
+    split(img, imageRGB);
+    for (int i = 0; i < 3; i++)
+    {
+       equalizeHist(imageRGB[i], imageRGB[i]);
+    }
+    merge(imageRGB, 3, img);
 
+    //图像的resize
     Mat tmp1;
-    resize(img,tmp1,Size(480,320));
+    //resize(img,tmp1,Size(480,320));
+    resize(img,tmp1,Size(640,480));  //车采图像
     Mat tmp;
-    tmp = tmp1(Rect(160,200,160,120));
+    //tmp = tmp1(Rect(160,200,160,120));
+    tmp = tmp1(Rect(150,240,340,240));  //车采图像
+
     //dataformat transformat
     cvtColor(imgColorL, tmp, CV_BGR2BGRA);
     const unsigned int* buff = (const unsigned int*)tmp.data;
@@ -1264,11 +1268,22 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 {
 	//0 get img ready
 	/////////////////////
-
+    //直方图均衡化
+    Mat imageRGB[3];
+    split(img, imageRGB);
+    for (int i = 0; i < 3; i++)
+    {
+       equalizeHist(imageRGB[i], imageRGB[i]);
+    }
+    merge(imageRGB, 3, img);
+    //图像的resize
     Mat tmp1;
     resize(img,tmp1,Size(480,320));
+    //resize(img,tmp1,Size(640,480));  //车采图像
     Mat tmp;
     tmp = tmp1(Rect(160,200,160,120));
+    //tmp = tmp1(Rect(150,320,340,160));  //车采图像
+
 
 	cvtColor(tmp, imgMonoL, CV_BGR2GRAY);
     cvtColor(tmp, imgHSV, CV_BGR2HSV); // HSV(hue,saturation,value)颜色空间的模型对应于圆柱坐标系中的一个圆锥形子集
@@ -1368,7 +1383,8 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 		FILE*fp=NULL;//需要注意
 		//文件名是变量
 		char filename[30]={0};
-        string file = "a"+to_string(num)+".txt";
+        //string file = "/home/zc/project/travel_mod-build/label/commit/a" +to_string(num)+".txt";
+        string file = "a" +to_string(num)+".txt";
 		const char* chfile = file.c_str();
 		strcpy(filename,chfile);
 		

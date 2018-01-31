@@ -17,6 +17,7 @@ int main()
     param.imgScale = 0.325f;
     //每次要改变图像尺寸啦！！！
     param.imgSize = Size(208,156);
+    //param.imgSize = Size(1024,768);  //车采集
     //param.imgSize = imgl.size();
 
     param.calib.cu = 321.93585;
@@ -38,11 +39,11 @@ int main()
     //init TRDetect
     TRDetect trd(param);
 
-    string path = "/home/zc/Downloads/datesets/data2018/a7/";
+    string path = "/home/zc/Downloads/datesets/data2018/a/";
 
     int num = 1;
 
-    for(int i = 1;i < 218;i++)
+    for(int i = 1;i < 551;i++)
     {
         char a[10];
         string sa;
@@ -51,13 +52,13 @@ int main()
 
         Mat img = imread(path + sa + ".jpg");
 
-        Mat imageRGB[3];
-        split(img, imageRGB);
-        for (int i = 0; i < 3; i++)
-        {
-          equalizeHist(imageRGB[i], imageRGB[i]);
-        }
-        merge(imageRGB, 3, img);
+//        Mat imageRGB[3];
+//        split(img, imageRGB);
+//        for (int i = 0; i < 3; i++)
+//        {
+//          equalizeHist(imageRGB[i], imageRGB[i]);
+//        }
+//        imerge(imageRGB, 3, img);
         //imshow("show",imageROI);
         trd.simpleExtract(img,num);
         num++;
