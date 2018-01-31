@@ -13,7 +13,9 @@ MixTxt.m合成一个总的txt.
 >>test_data = inst(40001:61848,:);
 >>test_label = label(40001:61848,:);
 %Linear Kernel
->>model_linear = svmtrain(train_label, train_data, '-t 0');
+>>model_linear = svmtrain(train_label, train_data, '-c 1 -g 0.5 -h 1'); 
+%-c惩罚因子; -g 核函数参数,输入数据中的属性数,默认类别数目的倒数;调参的主要方法有Gridsearch,即穷举.
+%[SVM的两个参数 C 和 gamma](http://blog.csdn.net/wusecaiyun/article/details/49681431)
 >>[predict_label_L, accuracy_L, dec_values_L] = svmpredict(test_label, test_data, model_linear);
 >>accuracy_L % Display the accuracy using linear kernel
 ### 3.利用svm训练生成新的model.

@@ -38,7 +38,7 @@ int main()
     //init TRDetect
     TRDetect trd(param);
 
-    string path = "/home/zc/Downloads/datesets/data2018/g7/";
+    string path = "/home/zc/Downloads/datesets/data2018/a7/";
 
     int num = 1;
 
@@ -51,7 +51,13 @@ int main()
 
         Mat img = imread(path + sa + ".jpg");
 
-
+        Mat imageRGB[3];
+        split(img, imageRGB);
+        for (int i = 0; i < 3; i++)
+        {
+          equalizeHist(imageRGB[i], imageRGB[i]);
+        }
+        merge(imageRGB, 3, img);
         //imshow("show",imageROI);
         trd.simpleExtract(img,num);
         num++;

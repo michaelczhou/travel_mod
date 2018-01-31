@@ -1077,6 +1077,189 @@ void TRDetect::extract(int label)
 	}
 
 }
+void TRDetect::simpleExtract2(const Mat &img,int label)
+{
+    //char a[10];
+    //string sa;
+    //sprintf(a,"%04d", num);
+    //sa =a;
+    //1st  do the segmentation
+    ///////////////////////////
+    /// \brief tmp1
+    //直方图均衡化
+//    Mat imageRGB[3];
+//    split(img, imageRGB);
+//    for (int i = 0; i < 3; i++)
+//    {
+//       equalizeHist(imageRGB[i], imageRGB[i]);
+//    }
+//    merge(imageRGB, 3, img);
+
+    Mat tmp1;
+    resize(img,tmp1,Size(480,320));
+    Mat tmp;
+    tmp = tmp1(Rect(160,200,160,120));
+    //dataformat transformat
+    cvtColor(imgColorL, tmp, CV_BGR2BGRA);
+    const unsigned int* buff = (const unsigned int*)tmp.data;
+
+    //only do segmentation once and the number of SP is 180;
+    int n=2;
+    int& nSuperpixels = layer[n].nSuperpixels;
+    // cpu slic
+    SLIC mySeg;
+    layer[n].imgSeg.create(sz, CV_32S);
+    Mat imgSeg = layer[n].imgSeg;
+    mySeg.PerformSLICO_ForGivenK( buff, sz.width, sz.height,
+                                      (int*)imgSeg.data,
+                                      nSuperpixels,
+                                      param.seg.k[n],
+                                      param.seg.numItr);
+
+    //2nd compute the center of SP
+    //////////////////////////////
+    nSuperpixels = layer[n].nSuperpixels;
+    assert(nSuperpixels!=0);
+    layer[n].info.create(nSuperpixels, INFO_NUM, CV_32S);
+    layer[n].flagTR.create(nSuperpixels,1,CV_8U);
+    layer[n].input.create(nSuperpixels, param.net.nInputNeurons, CV_32F);
+
+    // create references and initialize
+    Mat& rimgSeg = layer[n].imgSeg;
+    Mat& info   = layer[n].info;
+    Mat& input  = layer[n].input;
+    Mat& flagTR = layer[n].flagTR;
+    info.setTo(Scalar(0));
+    input.setTo(Scalar(0.0f));
+
+    // create references and initialize
+    const int nBin_H = param.net.nBin_H;
+    const int nBin_S = param.net.nBin_S;
+    const int nBin_V = param.net.nBin_V;
+    const int step1 = nBin_H;
+    const int step2 = step1 + nBin_S;
+    const int step3 = step2 + nBin_V;
+    float scaleH = 180.0f/nBin_H;
+    float scaleS = 256.0f/nBin_S;
+    float scaleV = 256.0f/nBin_V;
+
+    // get data ready
+    for(int r=0; r<sz.height; ++r)
+    {
+        const auto pSeg = imgSeg.ptr<const unsigned int>(r);
+        for(int c=0; c<sz.width; ++c)
+        {
+            auto label = pSeg[c];
+            auto pInfo = (unsigned int *)info.ptr(label);
+            ++pInfo[INFO_SZ];
+            pInfo[INFO_ROW] += r;
+            pInfo[INFO_COL] += c;
+        }
+    }
+    // compute the center
+    info.col(INFO_ROW) /= info.col(INFO_SZ);
+    info.col(INFO_COL) /= info.col(INFO_SZ);
+    Mat iii=result;
+    //3rd determine each SP's traversability, 1 for yes, 0 for no
+    /////////////////////////////////////////////////////////////
+    //indexTR is the index of the traversable SPs
+    vector<int> indexTR;
+    int* rowK;
+    for( int k=0; k < nSuperpixels; k++)
+    {
+        //???not sure about the position
+        rowK = info.ptr<int>(k);
+        int r =rowK[1];
+        int c =rowK[2];
+        if(result.at<uchar>(r,c) > 100){
+            flagTR.at<uchar>(k) = 1;
+            indexTR.push_back(k);
+        }
+        else
+            flagTR.at<uchar>(k) = 0;
+    }
+    //如果indexTR的size为0，即没有可行区域识别出来，则中断
+    if(indexTR.size()<20)
+        return;
+    //4th select some SP which is traversable randomly
+    ////////////////////////////////////////////////////
+    //randomTR is the sequence for selected SP's label
+    int randomTR[20];
+    for(int i=0; i<20; i++){
+        srand(unsigned(time(0)));
+        randomTR[i] = indexTR[rand()%indexTR.size()];
+    }
+
+    //5th extract selected SP's feature
+    ////////////////////////////////////
+    int flag = 0;    //determine whether the SP is selected
+    // get data ready
+    for(int r=0; r<sz.height; ++r)
+    {
+        const auto pHSV = imgHSV.ptr<const Point3_<unsigned char>>(r);
+        const auto pLBP = imgLBP.ptr<const unsigned char>(r);
+        const auto pSeg = imgSeg.ptr<const unsigned int>(r);
+        for(int c=0; c<sz.width; ++c)
+        {
+            auto label = pSeg[c];
+            for(int i=0; i<20; i++)
+                if (label == randomTR[i])
+                    flag = 1;
+
+            if (flag==0)
+                continue;
+            else{
+            auto pInput = (float *)input.ptr(label);
+
+            int posH = (int)(pHSV[c].x/scaleH);
+            int posS = (int)(pHSV[c].y/scaleS) + step1;
+            int posV = (int)(pHSV[c].z/scaleV) + step2;
+            int posLBP = pLBP[c] + step3;
+
+            ++pInput[posH];
+            ++pInput[posS];
+            ++pInput[posV];
+            ++pInput[posLBP];
+
+            auto pInfo = (unsigned int *)info.ptr(label);
+            ++pInfo[INFO_SZ];
+            pInfo[INFO_ROW] += r;
+            pInfo[INFO_COL] += c;
+            }
+        }
+    }
+
+    // normalize the network input
+    for(int r=0; r<input.rows; ++r)
+    {
+        input.row(r) /= info.at<uint32_t>(r,INFO_SZ);
+    }
+
+    //6th write features into a txt
+    //string path = "F:/dataset/part_a/wet-a/camera_stereo_left/frames/";
+    ///////////////////////////////
+
+    //or 直接fp=fopen("feature.txt","w");
+    FILE*fp=NULL;
+    fp=fopen("feature.txt","w");
+    //fprintf(fp,"\n");
+    fclose(fp);
+    fp=NULL;
+
+    for(int i=0;i<20;i++)
+    {
+        fp=fopen("feature.txt","a");  //创建文件
+        fprintf(fp,"%d ",label);
+        for(int j=0;j<55;j++){
+            fprintf(fp,"%d:%f ",j+1,input.ptr<float>(randomTR[i])[j]); //从控制台中读入并在文本输出
+        }
+        fprintf(fp,"\n");
+        fclose(fp);
+        fp=NULL;//需要指向空，否则会指向原打开文件地址
+    }
+
+}
+
 void TRDetect::simpleExtract(const Mat &img, int num)
 {
 	//0 get img ready
@@ -1185,7 +1368,7 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 		FILE*fp=NULL;//需要注意
 		//文件名是变量
 		char filename[30]={0};
-        string file = "g"+to_string(num)+".txt";
+        string file = "a"+to_string(num)+".txt";
 		const char* chfile = file.c_str();
 		strcpy(filename,chfile);
 		
@@ -1193,7 +1376,7 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 		//if(NULL==fp) return -1;//要返回错误代码
 		//while(scanf("%c",&c)!=EOF)
 		//add the label first, 1 for asphalt, 2 for grass, 3 for sand
-        fprintf(fp,"%d ",2);
+        fprintf(fp,"%d ",1);
 		for(int j=0;j<55;j++){			
 			
 			fprintf(fp,"%d:",j+1); //从控制台中读入并在文本输出

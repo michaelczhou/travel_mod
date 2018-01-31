@@ -144,6 +144,7 @@ public:
     bool process(const cv::Mat &image);
 	void extract(int label);  //get testing data
 	void simpleExtract(const cv::Mat &img, int num);  //get training data
+    void simpleExtract2(const cv::Mat &img, int label);
 
     void stereoMatch(const cv::Mat &imageL, const cv::Mat &imageR, cv::Mat& disparity, cv::Mat& pointCloud);
 
