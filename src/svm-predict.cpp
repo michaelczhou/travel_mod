@@ -154,10 +154,10 @@ int svmPredict(int argc, char **argv)
 {
 	FILE *input, *output;
 	int i;
-	// parse options
+    // parse options 分析选项
 	for(i=1;i<argc;i++)
 	{
-		if(argv[i][0] != '-') break;
+        if(argv[i][0] != '-') break;  //看是否有选项option,若无选项,此时i=1;
 		++i;
 		switch(argv[i-1][1])
 		{
@@ -176,8 +176,8 @@ int svmPredict(int argc, char **argv)
 
 	if(i>=argc-2)
 		exit_with_help();
-
-	//读取测试集数据
+    //char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};
+    //读取测试集数据,是tr_detect::extract函数里生成的.
 	input = fopen(argv[i],"r");
 	if(input == NULL)
 	{

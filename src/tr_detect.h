@@ -137,7 +137,7 @@ public:
 
 public:
     TRDetect(parameters param);
-    ~TRDetect();
+    ~TRDetect();//析构函数,有助于跳出程序(如关闭文件,释放内存等)前释放资源.派生类的析构函数在执行完后,会自动执行基类的析构函数.
 
     // the second parameter can be Mat(), imgR or pointCloud
     bool process(const cv::Mat &imageL, const cv::Mat &imageR);

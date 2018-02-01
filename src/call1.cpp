@@ -39,10 +39,9 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 		//imwrite(path +"new/" + sa +"result"+ ".jpg",sResult);
 		//用extract提取测试集的特征,并保存到feature.txt
         //trd.extract(label);
-
         trd.simpleExtract2(imgl,label);
 		//使用svmpredict来对测试集预测，后续还要在线显示
-        char *argv[] = {"", "feature.txt", "train0131_1.model", "output.txt"};  //groundtrue train
+        char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};  //groundtrue train
         //char *argv[] = {"", "feature.txt", "train0319.model", "output.txt"};
         svmPredict(4,argv);
 		
@@ -120,6 +119,7 @@ int main(){
 
     //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
+    //char型指针,type是指针的基类型,他必须是一个有效的c++ 的数据类型.所有指针的值的实际数据类型都是一个代表内存地址的长的十六进制数.
 
     for(int i=100; i<702; i++) //step into the loop
 	{
@@ -127,7 +127,7 @@ int main(){
 		//sa是序号，filename是特征提取后保存的文件名
 		char a[10];
 		string sa;
-        sprintf(a,"%06d", i);
+        sprintf(a,"%06d", i); //字符串格式化,把格式化的数据写入某个字符串中.
 		sa =a;
         //std::cout << sa << std::endl;
 		
