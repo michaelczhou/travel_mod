@@ -39,11 +39,11 @@ int main()
     //init TRDetect
     TRDetect trd(param);
 
-    string path = "/home/zc/Downloads/datesets/data2018/a/";
+    string path = "/home/zc/Downloads/datesets/data2018/g/";
 
     int num = 1;
 
-    for(int i = 1;i < 551;i++)
+    for(int i = 1;i < 441;i++)
     {
         char a[10];
         string sa;

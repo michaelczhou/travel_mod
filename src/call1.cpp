@@ -134,21 +134,21 @@ int main(){
         Mat imgl = imread(path + sa + ".jpg");
         Mat imgr = imread(path2 + sa + ".jpg");
 
-//        //直方图均衡
-//        Mat imageRGB[3];
-//        split(imgl, imageRGB);
-//        for (int i = 0; i < 3; i++)
-//        {
-//          equalizeHist(imageRGB[i], imageRGB[i]);
-//        }
-//        merge(imageRGB, 3, imgl);
-//        Mat image1RGB[3];
-//        split(imgr, image1RGB);
-//        for (int i = 0; i < 3; i++)
-//        {
-//          equalizeHist(image1RGB[i], image1RGB[i]);
-//        }
-//        merge(image1RGB, 3, imgr);
+        //直方图均衡
+        Mat imageRGB[3];
+        split(imgl, imageRGB);
+        for (int i = 0; i < 3; i++)
+        {
+          equalizeHist(imageRGB[i], imageRGB[i]);
+        }
+        merge(imageRGB, 3, imgl);
+        Mat image1RGB[3];
+        split(imgr, image1RGB);
+        for (int i = 0; i < 3; i++)
+        {
+          equalizeHist(image1RGB[i], image1RGB[i]);
+        }
+        merge(image1RGB, 3, imgr);
 
         call(imgl, imgr, sout, sResult,trd,1);
 	}

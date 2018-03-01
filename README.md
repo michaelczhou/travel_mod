@@ -34,7 +34,7 @@ MixTxt.m合成一个总的txt.
 cd 到libsvm-3.21文件夹
 命令端输入:
 make
- ./svm-train -c 1 -g 0.07 -b 1 -h 0 train0603.txt t.model
+ ./svm-train -c 333 -g 0.5 -b 1 -h 1 train0603.txt t.model
 
 
 -----------
@@ -99,4 +99,10 @@ Command line arguments:
 ### 12.修改编码
 enca -L zh_CN -x utf-8 main.cpp
 ### 13.传参\函数构建后在子函数调用
+### 14.批量替换的命令如下：
+>sed -i "s/oldString/newString/g" `grep oldString -rl yourDir`
+
+注意，该“`”符号并不是单引号，而是键盘左上角第二排第一个的按键。 
+如想将type1中的“载人”修改为“载物”，只需要在终端中输入：
+>sed -i "s/载人/载物/g" `grep 载人 -rl /home/ubuntu/annotation/`
 

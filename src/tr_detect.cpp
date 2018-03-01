@@ -1384,7 +1384,7 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 		//文件名是变量
 		char filename[30]={0};
         //string file = "/home/zc/project/travel_mod-build/label/commit/a" +to_string(num)+".txt";
-        string file = "a" +to_string(num)+".txt";
+        string file = "g" +to_string(num)+".txt";
 		const char* chfile = file.c_str();
 		strcpy(filename,chfile);
 		
@@ -1392,7 +1392,7 @@ void TRDetect::simpleExtract(const Mat &img, int num)
 		//if(NULL==fp) return -1;//要返回错误代码
 		//while(scanf("%c",&c)!=EOF)
 		//add the label first, 1 for asphalt, 2 for grass, 3 for sand
-        fprintf(fp,"%d ",1);
+        fprintf(fp,"%d ",2);
 		for(int j=0;j<55;j++){			
 			
 			fprintf(fp,"%d:",j+1); //从控制台中读入并在文本输出
