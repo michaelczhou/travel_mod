@@ -41,8 +41,8 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
         //trd.extract(label);
         trd.simpleExtract2(imgl,label);
 		//使用svmpredict来对测试集预测，后续还要在线显示
-        char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};  //groundtrue train
-        //char *argv[] = {"", "feature.txt", "train0319.model", "output.txt"};
+        //char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};  //groundtrue train
+        char *argv[] = {"", "feature.txt", "train0301_200.model", "output.txt"};
         svmPredict(4,argv);
 		
 		//根据output的结果输出可行域类别分类结果
@@ -135,20 +135,20 @@ int main(){
         Mat imgr = imread(path2 + sa + ".jpg");
 
         //直方图均衡
-        Mat imageRGB[3];
-        split(imgl, imageRGB);
-        for (int i = 0; i < 3; i++)
-        {
-          equalizeHist(imageRGB[i], imageRGB[i]);
-        }
-        merge(imageRGB, 3, imgl);
-        Mat image1RGB[3];
-        split(imgr, image1RGB);
-        for (int i = 0; i < 3; i++)
-        {
-          equalizeHist(image1RGB[i], image1RGB[i]);
-        }
-        merge(image1RGB, 3, imgr);
+//        Mat imageRGB[3];
+//        split(imgl, imageRGB);
+//        for (int i = 0; i < 3; i++)
+//        {
+//          equalizeHist(imageRGB[i], imageRGB[i]);
+//        }
+//        merge(imageRGB, 3, imgl);
+//        Mat image1RGB[3];
+//        split(imgr, image1RGB);
+//        for (int i = 0; i < 3; i++)
+//        {
+//          equalizeHist(image1RGB[i], image1RGB[i]);
+//        }
+//        merge(image1RGB, 3, imgr);
 
         call(imgl, imgr, sout, sResult,trd,1);
 	}
