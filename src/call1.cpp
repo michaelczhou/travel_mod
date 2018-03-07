@@ -41,8 +41,8 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
         //trd.extract(label);
         trd.simpleExtract2(imgl,label);
 		//使用svmpredict来对测试集预测，后续还要在线显示
-        //char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};  //groundtrue train
-        char *argv[] = {"", "feature.txt", "train0301_200.model", "output.txt"};
+        char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};  //groundtrue train
+        //char *argv[] = {"", "feature.txt", "train0301_200.model", "output.txt"};
         svmPredict(4,argv);
 		
 		//根据output的结果输出可行域类别分类结果
@@ -69,7 +69,8 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 			break;
 		}
 		//putText(sResult,"type",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/200, cvScalar(0, 0, 200, 0));
-		imshow("result",sResult);
+        namedWindow("result",CV_WINDOW_NORMAL);
+        imshow("result",sResult);
 		waitKey(1);
 		sdkStopTimer(&timer);
 		printf("time spent: %.2fms\n", sdkGetTimerValue(&timer));
