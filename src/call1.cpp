@@ -27,36 +27,42 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 	//创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
 			
-		sdkResetTimer(&timer);
-		sdkStartTimer(&timer);
-		trd.process(imgl,imgr);
-        //trd.addLabel(label);
-		//保存标注以后的可行域图片
-		//imwrite(path +"new/" +sa +"labeled"+ ".jpg",trd.addLabel(label));
-		//显示结果
-		sResult=trd.getSresult();
-		//保存叠加结果
-		//imwrite(path +"new/" + sa +"result"+ ".jpg",sResult);
-		//用extract提取测试集的特征,并保存到feature.txt
-        //trd.extract(label);
-        trd.simpleExtract2(imgl,label);
-		//使用svmpredict来对测试集预测，后续还要在线显示
-        char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};  //groundtrue train
-        //char *argv[] = {"", "feature.txt", "train0301_200.model", "output.txt"};
-        svmPredict(4,argv);
+    sdkResetTimer(&timer);
+    sdkStartTimer(&timer);
+
+    //第一次处理图像
+    trd.process(imgl,imgr);
+    //trd.addLabel(label);
+    //保存标注以后的可行域图片
+    //imwrite(path +"new/" +sa +"labeled"+ ".jpg",trd.addLabel(label));
+
+    //显示结果
+    sResult=trd.getSresult();
+    //保存叠加结果
+    //imwrite(path +"new/" + sa +"result"+ ".jpg",sResult);
+    //用extract提取测试集的特征,并保存到feature.txt
+    //trd.extract(label);
+
+    //第二次处理
+    trd.simpleExtract2(imgl,label);
+    //使用svmpredict来对测试集预测，后续还要在线显示
+    //argv命令参数,参数以字符串数组的形式传入
+    char *argv[] = {"", "feature.txt", "train0131_true.model", "output.txt"};  //groundtrue train
+    //char *argv[] = {"", "feature.txt", "train0301_200.model", "output.txt"};
+    svmPredict(4,argv);
 		
-		//根据output的结果输出可行域类别分类结果
-		//写在outputVote.cpp里面
-		terrainType=outputVote(type);
-		//将输出的分类结果显示在图片结果上
-		switch (terrainType)
-		{
-		case 'a':
-			putText(sResult,"asphalt",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
+    //根据output的结果输出可行域类别分类结果
+    //写在outputVote.cpp里面
+    terrainType=outputVote(type);
+    //将输出的分类结果显示在图片结果上
+    switch (terrainType)
+    {
+        case 'a':
+            putText(sResult,"asphalt",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
 			outLabel=1;
 			break;
 		case 'g':
-			putText(sResult,"grass",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
+            putText(sResult,"grass",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
 			outLabel=2;
 			break;
 		case 's':
@@ -67,21 +73,25 @@ int call(const Mat& imgl, const Mat& imgr, int outLabel,Mat& sResult, TRDetect& 
 			putText(sResult,"unknown",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/160, cvScalar(0, 0, 200, 0));
 			outLabel=0;
 			break;
-		}
-		//putText(sResult,"type",Point(20, int(sResult.rows*0.9)), FONT_HERSHEY_PLAIN,sResult.cols/200, cvScalar(0, 0, 200, 0));
-        namedWindow("result",CV_WINDOW_NORMAL);
-        imshow("result",sResult);
-		waitKey(1);
-		sdkStopTimer(&timer);
-		printf("time spent: %.2fms\n", sdkGetTimerValue(&timer));
+    }
+
+    namedWindow("result",CV_WINDOW_NORMAL);
+    imshow("result",sResult);
+    waitKey(1);
+    sdkStopTimer(&timer);
+    printf("time spent: %.2fms\n", sdkGetTimerValue(&timer));
 		
-		return outLabel;
+    return outLabel;
 }
-int main(){
+
+int main()
+{
 
 	//更改数据集的地址
-    string path = "/home/zc/Downloads/datesets/data2018/left/";
-    string path2= "/home/zc/Downloads/datesets/data2018/right/";
+    //string path = "/home/zc/Downloads/datesets/data2018/left/";
+    //string path2= "/home/zc/Downloads/datesets/data2018/right/";
+    string path= "/home/zc/Downloads/datesets/bumblebee2image/left/";
+    string path2= "/home/zc/Downloads/datesets/bumblebee2image/right/";
 //    string path = "/home/zc/Downloads/datesets/data2018/g/";
 //    string path2= "/home/zc/Downloads/datesets/data2018/g/";
 	TRDetect::parameters param;
@@ -94,24 +104,28 @@ int main(){
 	//2.或者在知道尺寸的情况下直接size=（640，480）
     param.imgSize = cv::Size(1024,768);
 
-	param.calib.cu = 321.93585;
-	param.calib.cv = 245.76448;
-	param.calib.f  = 491.659520;
+    param.calib.cu = 160.718;
+    param.calib.cv = 122.632;
+    //相机光轴在图像坐标系中的偏移量,以像素为单位
+    param.calib.f  = 245.83;
 	param.calib.baseline = 0.120014;
 
 	int numScale = 3;
 	int nSuperpixels[] = {450,180,65};
+    //这是超像素的什么参数?
 	float wVote[] = {0.7f,1.0f,0.7f};
+    //这是什么投票比例?
 
 	vector<int> k(nSuperpixels, nSuperpixels + sizeof(nSuperpixels) / sizeof(int));
 	vector<float> w(wVote, wVote + sizeof(wVote) / sizeof(float));
 	param.seg.numScale = numScale;
+    //要分割的超像素总数
 	param.seg.k = k;
 	param.seg.weight = w;
 
 	param.net.elm_af = ELM::ELM_AF_SIGMOID;
 
-    TRDetect trd(param);//init TRDetect
+    TRDetect trd(param);//init TRDetect实例化
 
 	
 
@@ -120,15 +134,16 @@ int main(){
 
     //创建一个数组，存的是前面几帧的label
 	char type[10]={'0'};
-    //char型指针,type是指针的基类型,他必须是一个有效的c++ 的数据类型.所有指针的值的实际数据类型都是一个代表内存地址的长的十六进制数.
+    //char型指针,type是指针的基类型,他必须是一个有效的c++ 的数据类型.
+    //所有指针的值的实际数据类型都是一个代表内存地址的长的十六进制数.
 
-    for(int i=100; i<702; i++) //step into the loop
+    for(int i=1; i<8074; i=i+7) //step into the loopstring path2= "/home/zc/Downloads/datesets/bumblebee2image/right"
 	{
 		//to fix the problem the filename
 		//sa是序号，filename是特征提取后保存的文件名
 		char a[10];
 		string sa;
-        sprintf(a,"%06d", i); //字符串格式化,把格式化的数据写入某个字符串中.
+        sprintf(a,"%04d", i); //字符串格式化,把格式化的数据写入某个字符串中.
 		sa =a;
         //std::cout << sa << std::endl;
 		

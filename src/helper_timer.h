@@ -378,6 +378,7 @@ StopWatchLinux::getDiffTime()
 //! @param  name of the new timer, 0 if the creation failed
 ////////////////////////////////////////////////////////////////////////////////
 inline bool
+//二级指针,指针的指针,
 sdkCreateTimer(StopWatchInterface **timer_interface)
 {
     //printf("sdkCreateTimer called object %08x\n", (void *)*timer_interface);
