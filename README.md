@@ -6,6 +6,7 @@ road detect/classification
 MixTxt.m合成一个总的txt.
 注意图片的顺序,正负样本的分离,可将原来的txt适当混入
 ### 2.matlab调整svm的参数
+```bash
 -----第二版----
 >>[label,inst] = libsvmread('./***.txt);
 >>train_data = inst(1:sss,:);
@@ -29,7 +30,7 @@ MixTxt.m合成一个总的txt.
 %[SVM的两个参数 C 和 gamma](http://blog.csdn.net/wusecaiyun/article/details/49681431)
 >>[predict_label_L, accuracy_L, dec_values_L] = svmpredict(test_label, test_data, model_linear);
 >>accuracy_L % Display the accuracy using linear kernel
-
+```
 ### 3.利用svm训练生成新的model.
 cd 到libsvm-3.21文件夹
 命令端输入:
